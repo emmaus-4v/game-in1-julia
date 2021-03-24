@@ -31,6 +31,8 @@ Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
 - icon http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
 - ...
 
+Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
+
 ## Storyline/Bulletpoints
 Level 1 - The beginning
 - Character wakes up, is greeted by Niki
@@ -103,28 +105,3 @@ Level 10 - The end
 - Niki is sad, but understands why Character did what they did
 - Tubbo jumps up onto the podium again, and calls Manberg, L’Manberg forevermore
 - Everyone rejoices, as the ending screen appears
-
-## Characters
-- Main character, player can choose name
-    Players choose the actions of the character too. 
-    Looks cannot be changed, but looks androgynous and will be referred to as they/them
-- Wilbur 
-    The "main villain" of the story. But honestly kinda a gray charater
-    He has brown hair, covered with a beanie, a long brown coat with a gray t-shirt and black pants as well as light brown eyes.
-    He is the ex-president of L'Manberg, voted off during the election. 
-    He now lives with the mentality of: If I can't have L'manberg, no one can have L'manberg
-- Niki
-    She takes in the main character as soon as the game begins
-    She was a part of L'Manberg before it fell, but left to create a place for victims and refugees
-    She is very kind and wants to see the good in everyone
-    She has pink hair, wears a black cape, as well as a grey,off-shoulder top and black pants, she has blue eyes
-- Karl
-    He is the king of Kinoko Kingdom, a peaceful country bordering Manberg, it is full of flowers
-    He had light brown hair as well as light brown eyes, a colourful overcoat and goggles as well as a monocle
-    He is a very neutral party in this story, mostly just caring about his and his citizens safety
-- Tommy
-
-- Tubbo
-- Quackity
-- Technoblade
-- Schlatt
