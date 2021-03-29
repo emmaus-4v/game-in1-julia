@@ -10,20 +10,19 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
 - [ ] teken speler
 - [ ] beweeg speler
-- [ ] ... *(vul zelf aan)*
-- [ ] punten op scherm zetten
-- [ ] punten kunnen scoren
+- [ ] teken andere karakters
+- [ ] Verschillende levels
 - [ ] uitlegscherm
 
-Uitbreiding: *bedenk iets, bijvoorbeeld meer tegenstanders*
+Uitbreiding:
 - [ ] Dialoog pop-up, en opties voor dialoog
 - [ ] Minigames?
 - [ ] Geluidseffecten en muziek
 
-Uitbreiding: *bedenk iets, bijvoorbeeld bewegende achtergrond*
+Uitbreiding:
 - [ ] Elk individuele karakter uitwerken (alle 9)
 - [ ] Bewegende achtergrond, en verschillende achtergronden voor elke locatie
-- [ ] Geheime levels
+- [ ] Geheime levels?
 
 ## Credits
 - Game template van het Emmauscollege Rotterdam https://github.com/emmauscollege/4HV-game-template
@@ -46,14 +45,15 @@ Level 2 - Kinoko Kingdom
 - He grants safe passage to and from Kinoko kingdom
 - He warns character of the nation over the hills
 
-Level 2.5 - The Library
-- The library is hidden
-- Bookshelves filled with stories
-- They sing of a nation with huge walls to protect all of its citizens
-- A president with his right hand man, as well as a loving family
-- An election
-- The book stops abruptly
-- The last page says: Must run to keep the library safe
+(Optioneel, extra level)
+    Level 2.5 - The Library
+    - The library is hidden
+    - Bookshelves filled with stories
+    - They sing of a nation with huge walls to protect all of its citizens
+    - A president with his right hand man, as well as a loving family
+    - An election
+    - The book stops abruptly
+    - The last page says: Must run to keep the library safe
 
 Level 3 - Journey with a child
 - Character goes on and meets Tommy

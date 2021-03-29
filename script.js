@@ -80,7 +80,7 @@ var tekenKogel = function(x, y) {
  */
 var tekenSpeler = function(x, y) {
   fill("white");
-  ellipse(x, y, 50, 50);
+  ellipse(x, y, 100, 100);
 };
 
 
@@ -102,9 +102,12 @@ var beweegKogel = function() {
 
 /**
  * Kijkt wat de toetsen/muis etc zijn.
- * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
+    if(){
+        spelerX = spelerX + 50
+        spelerY + spelerY + 50
+    }
 
 };
 
@@ -150,7 +153,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  background(blue);
 }
 
 
