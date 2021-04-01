@@ -2,17 +2,6 @@
 /// <reference path=".gitpod/p5.global-mode.d.ts" />
 "use strict";
 
-/* Game opdracht
-   Informatica - Emmauscollege Rotterdam
-   Template voor een game in JavaScript met de p5 library
-
-   Begin met dit template voor je game opdracht,
-   voeg er je eigen code aan toe.
- */
-
-
-
-
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
@@ -33,7 +22,10 @@ var vijandY = 0;   // y-positie van vijand
 
 var score = 0; // aantal behaalde punten
 
-
+var keyW = false;
+var keyA = false;
+var keyS = false;
+var keyD = false;
 
 
 
@@ -61,18 +53,6 @@ var tekenVijand = function(x, y) {
 
 };
 
-
-/**
- * Tekent de kogel of de bal
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
-var tekenKogel = function(x, y) {
-
-
-};
-
-
 /**
  * Tekent de speler
  * @param {number} x x-coördinaat
@@ -91,46 +71,56 @@ var beweegVijand = function() {
     
 };
 
+/** Letters ingedrukt */
+window.addEventListener("keyDown", onkeydown, false);
+window.addEventListener("keyUp", onKeyUp, false);
+function onKeyDown(event){
+    var keycode = event.keyCode;
+    switch (keyCode) {
+        case 68 : //d
+            keyD = true;
+            break;
+        case 83: //s
+            keyS = true;
+            break;
+        case 65: //a
+            keyA = true;
+            break;
+        case 87: //w
+            keyW = true;
+            break;
+    }
+}
 
-/**
- * Updatet globale variabelen met positie van kogel of bal
- */
-var beweegKogel = function() {
-
-};
-
+function onKeyUp(event) {
+    var keyCode = event.keyCode;
+    switch (keyCode) {
+        case 87: //w
+            keyW = false;
+            break;
+        case 65: //a
+            keyA = false;
+            break;
+        case 83: //s
+            keyS = false;
+            break;
+        case 68: //d
+            keyD = false;
+            break;
+    }
+}
 
 /**
  * Kijkt wat de toetsen/muis etc zijn.
  */
-var beweegSpeler = function() {
-    if(){
-        spelerX = spelerX + 50
-        spelerY + spelerY + 50
+/var beweegSpeler = function() {
+    if(keyD = true){
+        spelerX = spelerX + 20;
+        spelerY = spelerY + 20;
     }
-
-};
-
-
-/**
- * Zoekt uit of de vijand is geraakt
- * @returns {boolean} true als vijand is geraakt
- */
-var checkVijandGeraakt = function() {
-
-  return false;
-};
+}
 
 
-/**
- * Zoekt uit of de speler is geraakt
- * bijvoorbeeld door botsing met vijand
- * @returns {boolean} true als speler is geraakt
- */
-var checkSpelerGeraakt = function() {
-    
-  return false;
-};
 
 
 /**
@@ -166,22 +156,11 @@ function draw() {
   switch (spelStatus) {
     case SPELEN:
       beweegVijand();
-      beweegKogel();
       beweegSpeler();
       
-      if (checkVijandGeraakt()) {
-        // punten erbij
-        // nieuwe vijand maken
-      }
-      
-      if (checkSpelerGeraakt()) {
-        // leven eraf of gezondheid verlagen
-        // eventueel: nieuwe speler maken
-      }
 
       tekenVeld();
       tekenVijand(vijandX, vijandY);
-      tekenKogel(kogelX, kogelY);
       tekenSpeler(spelerX, spelerY);
 
       if (checkGameOver()) {

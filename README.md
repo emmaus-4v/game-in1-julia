@@ -8,6 +8,7 @@ Gemaakt door:
 
 Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
+- [x] verwijder ongebruikte code
 - [ ] teken speler
 - [ ] beweeg speler
 - [ ] teken andere karakters
