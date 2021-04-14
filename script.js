@@ -6,10 +6,14 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
-const UITLEG = 0;
-const SPELEN = 1;
-const GAMEOVER = 2;
-var spelStatus = SPELEN;
+const INTRO = 0;
+const SPELEN_LVL1 = 1;
+const SPELEN_LVL2 = 2;
+const SPELEN_LVL3 = 3;
+const GAMEOVER = 100;
+const CREDITS = 200;
+
+var spelStatus = SPELEN_LVL1;
 
 var spelerX = 200; // x-positie van speler
 var spelerY = 100; // y-positie van speler
@@ -113,7 +117,7 @@ function onKeyUp(event) {
 /**
  * Kijkt wat de toetsen/muis etc zijn.
  */
-/var beweegSpeler = function() {
+var beweegSpeler = function() {
     if(keyD = true){
         spelerX = spelerX + 20;
         spelerY = spelerY + 20;
@@ -122,15 +126,10 @@ function onKeyUp(event) {
 
 
 
+//tekst voor het intro scherm, credits scherm en eindscherm
 
-/**
- * Zoekt uit of het spel is afgelopen
- * @returns {boolean} true als het spel is afgelopen
- */
-var checkGameOver = function() {
-    
-  return false;
-};
+
+}
 
 
 /**
@@ -146,6 +145,16 @@ function setup() {
   background(blue);
 }
 
+function startUp(){
+    beweegVijand();
+    beweegSpeler();
+      
+
+    tekenVeld();
+    tekenVijand(vijandX, vijandY);
+    tekenSpeler(spelerX, spelerY);
+
+}
 
 /**
  * draw
@@ -154,18 +163,23 @@ function setup() {
  */
 function draw() {
   switch (spelStatus) {
-    case SPELEN:
-      beweegVijand();
-      beweegSpeler();
+    case INTRO:
+
+    break;
+
+    case SPELEN_LVL1:
+        startUp();
+
       
+    break;
 
-      tekenVeld();
-      tekenVijand(vijandX, vijandY);
-      tekenSpeler(spelerX, spelerY);
+    case SPELEN_LVL2:
+        startUp();
 
-      if (checkGameOver()) {
-        spelStatus = GAMEOVER;
-      }
-      break;
+      
+    break;
+    case CREDITS:
+
+    break;
   }
 }

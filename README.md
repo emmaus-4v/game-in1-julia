@@ -106,3 +106,23 @@ Level 10 - The end
 - Niki is sad, but understands why Character did what they did
 - Tubbo jumps up onto the podium again, and calls Manberg, L’Manberg forevermore
 - Everyone rejoices, as the ending screen appears
+
+
+
+
+
+
+
+## Little notes
+- to do intro: Logo onscreen, start button, credit button
+- to do credits: make list of artists artwork, credit cc's, credit teacher, credit yourself, have a button to go back to homescreen
+- to do lvls : Background function; Startup function; Dialog function; Characters function; Have the lvl change
+- to do end screen: say thanks for playing; credits button, homescreen button
+- to do art: logo, backgrounds, character art
+
+
+## Credits text
+- concept by : Julia
+- inspired by: The Dream Smp, created by Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
+- coded by: Julia
+- guided by Sander van Geest
