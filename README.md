@@ -126,3 +126,28 @@ Level 10 - The end
 - inspired by: The Dream Smp, created by Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
 - coded by: Julia
 - guided by Sander van Geest
+
+
+## Script, for copy pasting
+
+Scene 1
+Ah, I see you've finally awoken.
+Now, now. No reason to attack me, I'm just trying to help you.
+Follow me darling. I can take care of you once we reach the city.
+
+Here we are the beautiful entrance to my city!
+But cities cant be underground?
+Of course theycan silly! I built this city all by myself! I spent a lot of time excavating all that stone.
+Why is it so hidden? Are you hiding from someone?
+My city is a haven for those who are lost, scared or still searching.
+
+Isn't it beautiful? Wouldn't you want to stay here forever?
+No! Are you insane lady?
+Oh, I just thought it would have been nice for you to stay a while...
+Oh, no thank you ma'am, I still have so much of the world left to explore!
+That's alright, just know the city will always be available in case you need a place to stay!
+
+So I guess this is goodbye then, I didn't even catch your name before you wanted to leave...
+Oh! My name is: INSERT NAME Here
+Well then, NAME, I wish you well, I hope we see each other again. Safe travels!
+Thank you

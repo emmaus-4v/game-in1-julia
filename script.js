@@ -33,47 +33,10 @@ var keyD = false;
 
 
 
+
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
-
-
-/**
- * Tekent het speelveld
- */
-var tekenVeld = function () {
-  fill(blue);
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
-};
-
-
-/**
- * Tekent de vijand
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
-var tekenVijand = function(x, y) {
-    
-
-};
-
-/**
- * Tekent de speler
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
- */
-var tekenSpeler = function(x, y) {
-  fill("white");
-  ellipse(x, y, 100, 100);
-};
-
-
-/**
- * Updatet globale variabelen met positie van vijand of tegenspeler
- */
-var beweegVijand = function() {
-    
-};
 
 /** Letters ingedrukt */
 window.addEventListener("keyDown", onkeydown, false);
@@ -115,21 +78,63 @@ function onKeyUp(event) {
 }
 
 /**
+ * Tekent het speelveld
+ */
+var tekenVeld = function () {
+  fill(blue);
+  rect(20, 20, width - 2 * 20, height - 2 * 20);
+};
+
+
+/**
+ * Tekent de vijand
+ * @param {number} x x-coördinaat
+ * @param {number} y y-coördinaat
+ */
+var tekenVijand = function(x, y) {
+    
+
+};
+
+/**
+ * Tekent de speler
+ * @param {number} x x-coördinaat
+ * @param {number} y y-coördinaat
+ */
+var tekenSpeler = function(x, y) {
+  fill("white");
+  ellipse(x, y, 100, 100);
+};
+
+
+/**
+ * Updatet globale variabelen met positie van vijand of tegenspeler
+ */
+var beweegVijand = function() {
+    
+};
+
+
+
+/**
  * Kijkt wat de toetsen/muis etc zijn.
  */
 var beweegSpeler = function() {
     if(keyD = true){
         spelerX = spelerX + 20;
-        spelerY = spelerY + 20;
+    }
+    if (keyA =true){
+        spelerX = spelerX + 20;
+    }
+    if (spelerX < 20  ){
+        spelerX = 20
+    }
+    // Input linker rand max
+    if (spelerX > 0 ){
+        spelerX = 0
     }
 }
 
-
-
-//tekst voor het intro scherm, credits scherm en eindscherm
-
-
-}
 
 
 /**
