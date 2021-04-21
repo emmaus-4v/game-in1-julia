@@ -31,8 +31,7 @@ var keyA = false;
 var keyS = false;
 var keyD = false;
 
-
-
+var playerName = "insertNameHere"
 
 /* ********************************************* */
 /*      functies die je gebruikt in je game      */
@@ -76,6 +75,11 @@ function onKeyUp(event) {
             break;
     }
 }
+
+//dialoog arrays
+var dialogScene1Part1 = ("Ah, I see you've finally awoken.", "Now, now. No reason to attack me, I'm just trying to help you.", "Follow me darling. I can take care of you once we reach the city.")
+var dialogScene1Part2 = ("Here we are the beautiful entrance to my city!"," But cities cant be underground?"," Of course theycan silly! I built this city all by myself! I spent a lot of time excavating all that stone." ,"Why is it so hidden? Are you hiding from someone?" ,"My city is a haven for those who are lost, scared or still searching.")
+var dialogScene1Part3 = ("Isn't it beautiful? Wouldn't you want to stay here forever?", "No! Are you insane lady?", "Oh, I just thought it would have been nice for you to stay a while...", "Oh, no thank you ma'am, I still have so much of the world left to explore!", "That's alright, just know the city will always be available in case you need a place to stay!")
 
 /**
  * Tekent het speelveld
@@ -135,8 +139,6 @@ var beweegSpeler = function() {
     }
 }
 
-
-
 /**
  * setup
  * de code in deze functie wordt één keer uitgevoerd door
@@ -161,6 +163,10 @@ function startUp(){
 
 }
 
+function levelOneGamePlay(){
+    if (spelerX === 25)
+        return (dialogScene1Part1)
+}
 /**
  * draw
  * de code in deze functie wordt meerdere keren per seconde
