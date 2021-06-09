@@ -185,7 +185,11 @@ function levelOneGamePlay(){
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
-  switch (spelStatus) {
+  
+  }
+}
+
+/**switch (spelStatus) {
     case INTRO:
 
     break;
@@ -196,13 +200,11 @@ function draw() {
       
     break;
 
-    case SPELEN_LVL2:
+   /**  case SPELEN_LVL2:
         startUp();
 
       
     break;
     case CREDITS:
 
-    break;
-  }
-}
+    break;*/

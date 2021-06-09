@@ -16,7 +16,7 @@ Basis: uitleg, spelen, afgaan en punten
 - [ ] uitlegscherm
 
 Uitbreiding:
-- [ ] Dialoog pop-up, en opties voor dialoog
+- [ ] Dialoog, en opties voor dialoog
 - [ ] Minigames?
 - [ ] Geluidseffecten en muziek
 
@@ -108,8 +108,16 @@ Level 10 - The end
 - Everyone rejoices, as the ending screen appears
 
 
-
-
+## To do
+- add background
+- find bg picture
+- add player
+- find player picture
+- move player
+- dialog text
+- dialog options
+- add other character
+- find character picture
 
 
 
