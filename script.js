@@ -7,26 +7,26 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
-const INTRO = 0;
-const SPELEN_LVL1 = 1;
-const SPELEN_LVL2 = 2;
-const SPELEN_LVL3 = 3;
-const GAMEOVER = 100;
-const CREDITS = 200;
-var spelStatus = SPELEN_LVL1;
+const INTRO = 0;               // Spelinstructies
+const SPELEN_LVL1 = 1;         // Zie level 1 beschrijving in README
+const SPELEN_LVL2 = 2;         // Zie level 2 beschrijving in README
+const SPELEN_LVL3 = 3;         // Zie level 3 beschrijving in README
+const GAMEOVER = 100;          // Gameover scherm
+const CREDITS = 200;           // Laat alle credits zien
+var spelStatus = INTRO;  // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
 
-var spelerX = 200; // x-positie van speler
-var spelerY = 100; // y-positie van speler
+var spelerX = 20;             // x-positie van speler
+var spelerY = 200;             // y-positie van speler
 
-var kogelX = 0;    // x-positie van kogel
-var kogelY = 0;    // y-positie van kogel
+var nikiX = 300;                 // x-positie van Niki Nihachu
+var nikiY = 200;                 // y-positie van Niki Nihachu
 
-var nikiX = 0;   // x-positie van vijand
-var nikiY = 0;   // y-positie van vijand
+var karlX = 0;                 // x-positie van Karl Jacobs
+var karlY = 0;                 // y-positie van Karl Jacobs
 
-var score = 0; // aantal behaalde punten
+var score = 0;                 // aantal behaalde punten
 
-var speed = 5;
+var speed = 5; //IS DIT ECHT NODIG?
 
 /* ********************************************* */
 /*            variabelen voor gameplay           */
@@ -66,26 +66,22 @@ var dialogScene1Part3 = [
 /* ********************************************* */
 
 
-/**
- * Tekent het speelveld
- */
+//Tekent het speelveld
 var tekenVeld = function () {
   fill('red');
   rect(20, 20, width - 2 * 20, height - 2 * 20);
-};
+}
 
 
 /**
- * Tekent de vijand
+ * Tekent Niki Nihachu
  * @param {number} x x-coördinaat
  * @param {number} y y-coördinaat
  */
 var tekenNiki = function(x, y) {
     fill ("pink");
     ellipse (x, y, 100, 100);
-
-};
-
+}
 
 
 /**
@@ -96,51 +92,29 @@ var tekenNiki = function(x, y) {
 var tekenSpeler = function(x, y) {
   fill("white");
   ellipse(x, y, 100, 100);
-} ;
-
+}
 
 
 /**
- * Updatet globale variabelen met positie van vijand of tegenspeler
+ * Updatet globale variabelen met positie van Niki Nihachu
  */
 
 var beweegNiki = function() {
-    
-};
+    //DOES NIKI EVEN MOVE?
+}
 
 
 /**
- * Kijkt wat de toetsen/muis etc zijn.
+ * Zorg ervoor dat A en D de beweegknoppen zijn
  * Updatet globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
-    
     if (keyIsDown(65) && spelerX > 20) {
-        spelerX = spelerX - 20;
+        spelerX = spelerX - 5;
     }
     if (keyIsDown(68) && spelerX < 1260) {
-        spelerX = spelerX + 20;
+        spelerX = spelerX + 5;
     }
-};
-
-
-/**
- * Zoekt uit of de vijand is geraakt
- * @returns {boolean} true als vijand is geraakt
- */
-var checkVijandGeraakt = function() {
-
-  return false;
-};
-
-
-/**
- * Zoekt uit of de speler is geraakt
- * bijvoorbeeld door botsing met vijand
- * @returns {boolean} true als speler is geraakt
- */
-var checkSpelerGeraakt = function() {
-    return false;
 }
 
 
@@ -149,10 +123,8 @@ var checkSpelerGeraakt = function() {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    
   return false;
-};
-
+}
 
 
 /** function startUp(){
@@ -167,19 +139,19 @@ var checkGameOver = function() {
 }
 **/
 
-/**function levelOneGamePlay(){
-    if (spelerX === 25)
-        print (dialogScene1Part1 [1])
-    if (spelerX === 50)
-        print (dialogScene1Part1 [2])
-    if (spelerX === 75)
-        print (dialogScene1Part1 [3])
-    if (spelerX === 100)
-        print (dialogScene1Part1 [4])
 
-   
+function levelOneGamePlay(){ // ADD THE PLACEMENT FOR THE TEXT, ALSO IMPLEMENT IT INTO THE CODE
+    textSize (30);
+    if (spelerX > 50 && spelerX < 150)
+        text ("Ah, I see you've finally awoken.",500, 500, 500, 500)
+    if (spelerX > 150 && spelerX < 250)
+        text ("Who the hell are you!",500, 500, 500, 500)
+    if (spelerX > 250 && spelerX <350 )
+        text ("Now, now. No reason to threaten me, I'm just trying to help you.",500, 500, 500, 500)
+    if (spelerX > 350 && spelerX < 450)
+        text ('Follow me darling, I can take care of you once we reach the city',500, 500, 500, 500)
 }
-**/
+
 
 /**
  * setup
@@ -187,14 +159,10 @@ var checkGameOver = function() {
  * de p5 library, zodra het spel geladen is in de browser
  */
 function setup() {
-  // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
-  createCanvas(1280, 720);
-
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
- //rect(30, 20, 55, 55);
+    createCanvas(1280, 720);  //Maakt het canvas
+    background('blue');       // Maakt de achtergrond blauw
+ //rect(30, 20, 55, 55);    //REMOVE THIS WHEN DONE
 }
-
 
 
 /**
@@ -203,53 +171,44 @@ function setup() {
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
-  switch (spelStatus) {
-
-    case INTRO:
-    background('white');
-    textSize(30);
-    text('Use the A and D keys to move', 420, 300, 500, 400)
-    text('Hit enter to start', 500, 500, 500, 500)
-
-    if (keyIsDown(13)) {
-        spelStatus = SPELEN_LVL1
-    };
-
-    break;
-
-    case SPELEN_LVL1:
-      background(20, 10, 20);
-      tekenVeld();
-      beweegNiki();
-
-      beweegSpeler();
-      
-      if (checkVijandGeraakt()) {
-        // punten erbij
-        // nieuwe vijand maken
-      }
-      
-      if (checkSpelerGeraakt()) {
-        spelStatus = GAMEOVER;
-      }
-
-      
-      tekenNiki(nikiX, nikiY);
-      tekenSpeler(spelerX, spelerY);
-      
-      if (checkGameOver()) {
-        spelStatus = GAMEOVER;
-      }
-      break;
-
-      case GAMEOVER:
-        background('white')
-        text('GAMEOVER', 200, 200, 200, 200);
-        text('Hit escape to restart', 500, 200, 200, 200);
-      break;
-
-      if (keyIsDown(27)) {
+    if (keyIsDown(27)) {
           spelStatus = INTRO
-      };
+    }
+
+    switch (spelStatus) {
+
+        case INTRO:
+            textSize(30);
+            text('Use the A and D keys to move', 420, 300, 500, 400)
+            text('Hit enter to start', 500, 500, 500, 500)
+            /**var img1   
+            img1 = image('Pictures\background1.png', 100, 100);**/
+
+            if (keyIsDown(13)) {
+                spelStatus = SPELEN_LVL1
+            }
+
+        break;
+
+        case SPELEN_LVL1:
+            background(20, 10, 20);
+            tekenVeld();
+            beweegNiki();
+
+            beweegSpeler();
+            
+
+            tekenNiki(nikiX, nikiY);
+            tekenSpeler(spelerX, spelerY);
+            
+            levelOneGamePlay();
+
+        break;
+
+        case GAMEOVER:
+            background('white')
+            text('GAMEOVER', 200, 200, 200, 200);
+            text('Hit escape to restart', 500, 200, 200, 200);
+        break;
   }
 }

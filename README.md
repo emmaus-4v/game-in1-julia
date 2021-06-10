@@ -34,8 +34,8 @@ Uitbreiding:
 Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
 
 ## Requirements
-- [ ] Het start op
-- [ ] Het werkt
+- [X] Het start op
+- [X] Het werkt
 - [ ] Behaalde punten zijn zichtbaar bij game over
 - [ ] Het doel en de bediening van het spel zijn duidelijk
 
@@ -57,15 +57,15 @@ Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5z
 ## To do
 donderdag
 - [X] make shit work
-- [ ] add background
+- [?] add background
 - [X] find bg picture
 - [X] add player
 - [ ] find player picture
 - [X] move player
 vrijdag
-- [ ] dialog text
+- [-] dialog text
 - [ ] dialog options
-- [ ] add other character
+- [-] add other character
 - [ ] find character picture
 zaterdag
 - [ ] intro level
