@@ -56,9 +56,10 @@ Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5z
 
 ## To do
 donderdag
+- [X] make shit work
 - [ ] add background
-- [ ] find bg picture
-- [ ] add player
+- [X] find bg picture
+- [X] add player
 - [ ] find player picture
 - [ ] move player
 vrijdag

@@ -6,6 +6,8 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
+
+
 const INTRO = 0;
 const SPELEN_LVL1 = 1;
 const SPELEN_LVL2 = 2;
@@ -38,11 +40,12 @@ var playerName = "insertNameHere"
 /* ********************************************* */
 
 /** Letters ingedrukt */
-window.addEventListener("keyDown", onkeydown, false);
-window.addEventListener("keyUp", onKeyUp, false);
-function onKeyDown(event){
+window.addEventListener("keyPressed", onkeyPressed, false);
+window.addEventListener("keyReleased", onkeyReleased, false);
+
+function onkeyPressed(event){
     var keycode = event.keyCode;
-    switch (keyCode) {
+    switch (keycode) {
         case 68 : //d
             keyD = true;
             break;
@@ -58,9 +61,9 @@ function onKeyDown(event){
     }
 }
 
-function onKeyUp(event) {
-    var keyCode = event.keyCode;
-    switch (keyCode) {
+function onkeyReleased(event) {
+    var keycode = event.keyCode;
+    switch (keycode) {
         case 87: //w
             keyW = false;
             break;
@@ -88,10 +91,11 @@ var dialogScene1Part3 = ["Isn't it beautiful? Wouldn't you want to stay here for
 /**
  * Tekent het speelveld
  */
-var tekenVeld = function () {
-  fill(blue);
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
-};
+/**var tekenVeld = function () {
+    fill('red');
+    rect(20, 20, width - 2 * 20, height - 2 * 20);
+   
+}**/
 
 
 /**
@@ -128,19 +132,29 @@ var beweegVijand = function() {
  * Kijkt wat de toetsen/muis etc zijn.
  */
 var beweegSpeler = function() {
-    if(keyD = true){
-        spelerX = spelerX + 20;
+            /**  window.alert("keyD = " + keyD);
+                if(keyD = true){
+                    spelerX = spelerX + 20;
+      
+            }
+                if (keyA =true){
+                    spelerX = spelerX - 20;
+
+            }
+    
+                if (spelerX < 20  ){
+                    spelerX = 20
+            }
+                // Input linker rand max
+                if (spelerX > 1280 ){
+                    spelerX = 1280
+            }**/
+    if (keyIsDown(68) && spelerX < 1260) {
+        spelerX = spelerX + 20
     }
-    if (keyA =true){
-        spelerX = spelerX + 20;
-    }
-    if (spelerX < 20  ){
-        spelerX = 20
-    }
-    // Input linker rand max
-    if (spelerX > 0 ){
-        spelerX = 0
-    }
+    if (keyIsDown(65) && spelerX < 20){
+        spelerX = spelerX - 20
+}
 }
 
 /**
@@ -149,14 +163,16 @@ var beweegSpeler = function() {
  * de p5 library, zodra het spel geladen is in de browser
  */
 function setup() {
+    
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
+    background('blue');
 
+   //rect(30, 20, 55, 55);
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background(blue);
 }
 
-function startUp(){
+/** function startUp(){
     beweegVijand();
     beweegSpeler();
       
@@ -166,8 +182,8 @@ function startUp(){
     tekenSpeler(spelerX, spelerY);
 
 }
-
-function levelOneGamePlay(){
+**/
+/**function levelOneGamePlay(){
     if (spelerX === 25)
         print (dialogScene1Part1 [1])
     if (spelerX === 50)
@@ -177,7 +193,7 @@ function levelOneGamePlay(){
     if (spelerX === 100)
         print (dialogScene1Part1 [4])
 
-    
+   
 }
 /**
  * draw
@@ -185,8 +201,10 @@ function levelOneGamePlay(){
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
-   setup();
-  }
+    tekenSpeler(spelerX,spelerY);
+    beweegSpeler();
+
+}
 
 
 /**switch (spelStatus) {
@@ -208,3 +226,8 @@ function draw() {
     case CREDITS:
 
     break;*/
+
+
+    //AANGEROEPEN FUNCTIES
+    setup();
+    draw();
