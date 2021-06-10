@@ -9,8 +9,8 @@ Gemaakt door:
 Basis: uitleg, spelen, afgaan en punten
 - [x] maak index.html, style.css en script.js met canvas
 - [x] verwijder ongebruikte code
-- [ ] teken speler
-- [ ] beweeg speler
+- [X] teken speler
+- [X] beweeg speler
 - [ ] teken andere karakters
 - [ ] Verschillende levels
 - [ ] uitlegscherm
@@ -26,10 +26,10 @@ Uitbreiding:
 - [ ] Relationship stats
 
 ## Credits
-- Game template van het Emmauscollege Rotterdam https://github.com/emmauscollege/4HV-game-template
-- manifest.json https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
-- icon http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
-- ...
+- Game template van het Emmauscollege Rotterdam: https://github.com/emmauscollege/4HV-game-template
+- manifest.json: https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
+- icon: http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
+- Forest background: https://www.shutterstock.com/
 
 Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
 
@@ -61,7 +61,7 @@ donderdag
 - [X] find bg picture
 - [X] add player
 - [ ] find player picture
-- [ ] move player
+- [X] move player
 vrijdag
 - [ ] dialog text
 - [ ] dialog options
@@ -86,10 +86,10 @@ zondag
 
 
 ## Credits text
-- concept by : Julia
+- concept by : Julia Suijker
 - inspired by: The Dream Smp, created by Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
-- coded by: Julia
-- guided by Sander van Geest
+- coded by: Julia Suijker
+- guided by: Sander van Geest and Arno Suijker
 
 
 ## Script, for copy pasting
