@@ -17,13 +17,13 @@ Basis: uitleg, spelen, afgaan en punten
 
 Uitbreiding:
 - [ ] Dialoog, en opties voor dialoog
-- [ ] Minigames?
+- [ ] name insert
 - [ ] Geluidseffecten en muziek
 
 Uitbreiding:
 - [ ] Elk individuele karakter uitwerken (alle 9)
 - [ ] Bewegende achtergrond, en verschillende achtergronden voor elke locatie
-- [ ] Geheime levels?
+- [ ] Relationship stats
 
 ## Credits
 - Game template van het Emmauscollege Rotterdam https://github.com/emmauscollege/4HV-game-template
@@ -32,6 +32,88 @@ Uitbreiding:
 - ...
 
 Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
+
+## Requirements
+- [ ] Het start op
+- [ ] Het werkt
+- [ ] Behaalde punten zijn zichtbaar bij game over
+- [ ] Het doel en de bediening van het spel zijn duidelijk
+
+- [ ] Aantrekelijk uiterlijk
+- [ ] Prettige bediening
+- [ ] Eenvoudig om me te beginnen, moeilijker als je verder komt
+- [ ] Afwisseling
+
+- [ ] Code volgt de lijn van de template
+- [ ] Code is netjes en duidelijk leesbaar
+- [ ] Code bevat geen dubbele stukjes code
+- [ ] Je hebt technieken gebruikt die zijn aangeboden
+- [ ] Je hebt dingen toegevoegd waarven je zelf hebt onderzocht hoe ze werken
+
+- [ ] Je toont inzet tijdens de lessen
+- [ ] De planning is vooraf gemaakt, gevolgd en aangepast
+- [ ] Werk is verdeeld over de weken waarin het project gewerkt
+
+## To do
+donderdag
+- [ ] add background
+- [ ] find bg picture
+- [ ] add player
+- [ ] find player picture
+- [ ] move player
+vrijdag
+- [ ] dialog text
+- [ ] dialog options
+- [ ] add other character
+- [ ] find character picture
+zaterdag
+- [ ] intro level
+- [ ] make at least 2nd level
+- [ ] endscreen & credits
+zondag
+- [ ] intro screen
+- [ ] relationship stats
+- [ ] any other levels you can manage
+
+
+## Extra's
+- to do intro: Logo onscreen, start button, credit button
+- to do credits: make list of artists artwork, credit cc's, credit teacher, credit yourself, have a button to go back to homescreen
+- to do lvls : Background function; Startup function; Dialog function; Characters function; Have the lvl change; relationship stats
+- to do end screen: say thanks for playing; credits button, homescreen button
+- to do art: logo, backgrounds, character art
+
+
+## Credits text
+- concept by : Julia
+- inspired by: The Dream Smp, created by Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
+- coded by: Julia
+- guided by Sander van Geest
+
+
+## Script, for copy pasting
+
+Scene 1
+Ah, I see you've finally awoken.
+Now, now. No reason to attack me, I'm just trying to help you.
+Follow me darling. I can take care of you once we reach the city.
+
+Here we are the beautiful entrance to my city!
+But cities cant be underground?
+Of course theycan silly! I built this city all by myself! I spent a lot of time excavating all that stone.
+Why is it so hidden? Are you hiding from someone?
+My city is a haven for those who are lost, scared or still searching.
+
+Isn't it beautiful? Wouldn't you want to stay here forever?
+No! Are you insane lady?
+Oh, I just thought it would have been nice for you to stay a while...
+Oh, no thank you ma'am, I still have so much of the world left to explore!
+That's alright, just know the city will always be available in case you need a place to stay!
+
+So I guess this is goodbye then, I didn't even catch your name before you wanted to leave...
+Oh! My name is: INSERT NAME Here
+Well then, NAME, I wish you well, I hope we see each other again. Safe travels!
+Thank you
 
 ## Storyline/Bulletpoints
 Level 1 - The beginning
@@ -106,56 +188,3 @@ Level 10 - The end
 - Niki is sad, but understands why Character did what they did
 - Tubbo jumps up onto the podium again, and calls Manberg, L’Manberg forevermore
 - Everyone rejoices, as the ending screen appears
-
-
-## To do
-- add background
-- find bg picture
-- add player
-- find player picture
-- move player
-- dialog text
-- dialog options
-- add other character
-- find character picture
-
-
-
-## Little notes
-- to do intro: Logo onscreen, start button, credit button
-- to do credits: make list of artists artwork, credit cc's, credit teacher, credit yourself, have a button to go back to homescreen
-- to do lvls : Background function; Startup function; Dialog function; Characters function; Have the lvl change
-- to do end screen: say thanks for playing; credits button, homescreen button
-- to do art: logo, backgrounds, character art
-
-
-## Credits text
-- concept by : Julia
-- inspired by: The Dream Smp, created by Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
-- coded by: Julia
-- guided by Sander van Geest
-
-
-## Script, for copy pasting
-
-Scene 1
-Ah, I see you've finally awoken.
-Now, now. No reason to attack me, I'm just trying to help you.
-Follow me darling. I can take care of you once we reach the city.
-
-Here we are the beautiful entrance to my city!
-But cities cant be underground?
-Of course theycan silly! I built this city all by myself! I spent a lot of time excavating all that stone.
-Why is it so hidden? Are you hiding from someone?
-My city is a haven for those who are lost, scared or still searching.
-
-Isn't it beautiful? Wouldn't you want to stay here forever?
-No! Are you insane lady?
-Oh, I just thought it would have been nice for you to stay a while...
-Oh, no thank you ma'am, I still have so much of the world left to explore!
-That's alright, just know the city will always be available in case you need a place to stay!
-
-So I guess this is goodbye then, I didn't even catch your name before you wanted to leave...
-Oh! My name is: INSERT NAME Here
-Well then, NAME, I wish you well, I hope we see each other again. Safe travels!
-Thank you

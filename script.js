@@ -185,9 +185,9 @@ function levelOneGamePlay(){
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
-  
+   setup();
   }
-}
+
 
 /**switch (spelStatus) {
     case INTRO:
