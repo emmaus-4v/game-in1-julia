@@ -11,9 +11,9 @@ Basis: uitleg, spelen, afgaan en punten
 - [x] verwijder ongebruikte code
 - [X] teken speler
 - [X] beweeg speler
-- [ ] teken andere karakters
-- [ ] Verschillende levels
-- [ ] uitlegscherm
+- [X] teken andere karakters
+- [-] Verschillende levels
+- [-] uitlegscherm
 
 Uitbreiding:
 - [ ] Dialoog, en opties voor dialoog
@@ -57,13 +57,13 @@ Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5z
 ## To do
 donderdag
 - [X] make shit work
-- [X ] add background
+- [X] add background
 - [X] find bg picture
 - [X] add player
-- [ ] find player picture
+- [X] find player picture
 - [X] move player
 vrijdag
-- [-] dialog text
+- [X] dialog text
 - [ ] dialog options
 - [-] add other character
 - [ ] find character picture
