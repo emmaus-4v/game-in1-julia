@@ -38,6 +38,9 @@ Uitbreiding:
 - Niki's underground city background: Jungle house from the game https://terraria.org
 - Base of all the characters: frisk from https://undertale.com
 
+- Kinoko Kingdom background: u/TexMexxx, reddit.com
+- Pogtopia entrance background: RodrixAP, flickr.com
+- Manberg background: Blackspire, assetstore.unity.com/
 
 Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
 

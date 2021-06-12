@@ -13,11 +13,13 @@ const INTROLVL = 1;             // Hrt eerste level, laat zien hoe je moet beweg
 const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in README
-const SPELEN_LVL2_1 = 20;         // Zie level 2 beschrijving in README
+const SPELEN_LVL2_1 = 21;       // Zie level 2 beschrijving in README
+const SPELEN_LVL2_2 = 22;       // Zie level 2 beschrijving in README
+const SPELEN_LVL2_5 = 25;       // Zie level 2 beschrijving in README
 const SPELEN_LVL3 = 30;         // Zie level 3 beschrijving in README
 const GAMEOVER = 100;           // Gameover scherm
 const CREDITS = 200;            // Laat alle credits zien
-var spelStatus = INTRO; // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
+var spelStatus = INTRO; 
 
 var spelerX = 0;                // x-positie van speler
 var spelerY = 150;              // y-positie van speler
@@ -25,8 +27,8 @@ var spelerY = 150;              // y-positie van speler
 var nikiX = 1050;               // x-positie van Niki Nihachu
 var nikiY = 150;                // y-positie van Niki Nihachu
 
-var karlX = 0;                  // x-positie van Karl Jacobs
-var karlY = 0;                  // y-positie van Karl Jacobs
+var karlX = 1000;                  // x-positie van Karl Jacobs
+var karlY = 150;                  // y-positie van Karl Jacobs
 
 var score = 0;                  // aantal behaalde punten
 var teller = 0;
@@ -41,6 +43,8 @@ var bg0;
 var bg1;
 var bg2;
 var bg3;
+var bg4;
+var bg45;
 var playerimg;
 var nikiImg;
 var karlImg;
@@ -84,6 +88,17 @@ var mushTxt = function(){ //mushroom boy dialogue
     text("Mushroom man", col1, row1, 500, 500)
 }
 
+var karlTxt = function(){ //Karl dialogue
+    textSize (30);
+    fill('#ab1a00');
+    text("King Karl Jacobs", col1, row1, 500, 500)
+}
+
+var bookTxt = function(){
+    textSize (30);
+    fill('#d6c483');
+    text("Books", col1, row1, 500, 500)
+}
 
 //dialoog arrays
 var dialogScene1Part1 = [
@@ -116,7 +131,15 @@ var dialogScene1Part3 = [
 ];
 
 var dialogScene2Part1 = [
-    
+    //answer 1 + response
+    "1. That woman was really weird",
+    "I'm really glad I got out of there",
+    //answer 2 + response
+    "2. She never even told me her name",
+    "Oh well, I'm sure we'll meet again",
+    //More monologueing
+    "I'll just go into another direction",
+    "I'll just see where I end up",
 ]
 
 var dialogScene2Part2 = [
@@ -130,10 +153,26 @@ var dialogScene2Part2 = [
     "Okay, that was kind of funny, I’ll give you that",
     //The rest of Karl's monologue
     "You’re really not from around here, are you?",
-    "Stranger, I request that you leave Kinoko Kingdom at once",
+    "Stranger, turn around and leave Kinoko Kingdom at once",
     "As it is a matter of national security declared by king Karl",
     "Oh, and stranger",
-    "Stay clear of the nation over the hills"
+    "Stay clear of the nation over the hills",
+    "Stranger, turn around and go away",
+]
+
+var dialogScene2Part5 = [
+    //the stories that the books tell
+    "The first of the kingdoms was started by a group of friends",
+    "Others flocked to the kingdom, but soon were upset with the rules",
+    "They moved away, starting a new nation",
+    "High wall protected all the seperatists and the other citizens",
+    "After some time, both of the kingdoms were living in peace",
+    "Until the original kingdom attacked the seperatists",
+    "The war went on a long time, both sides made sacrifices",
+    "After the war, the seperatists had an election",
+    "A newcomer, an outsider won, and kicked out the old leaders",
+    "Things are going wrong",
+    "Must leave to keep the library safe"
 ]
 
 /* ********************************************* */
@@ -180,7 +219,6 @@ function draw() {
             tekenVeld1();
             checkGameOver();
 
-            beweegNiki();
             beweegSpeler();
             
 
@@ -194,7 +232,6 @@ function draw() {
             tekenVeld2();
             checkGameOver();
 
-            beweegNiki();
             beweegSpeler();
             
 
@@ -208,7 +245,6 @@ function draw() {
             tekenVeld3();
             checkGameOver();
 
-            beweegNiki();
             beweegSpeler();
             
 
@@ -228,6 +264,29 @@ function draw() {
             tekenSpeler();
         
             levelTwoPartOneGamePlay();
+        break;
+
+        case SPELEN_LVL2_2:
+            tekenVeld4();
+            checkGameOver();
+
+            beweegSpeler();
+            
+            tekenKarl();
+            tekenSpeler();
+        
+            levelTwoPartTwoGamePlay();
+        break;
+
+        case SPELEN_LVL2_5:
+            tekenVeld4();
+            checkGameOver();
+
+            beweegSpeler();
+            
+            tekenSpeler();
+        
+            levelTwoPartFiveGamePlay();
         break;
 
         case GAMEOVER:
@@ -294,6 +353,10 @@ function preload(){
     // @ts-ignore
     bg3 = loadImage('Pictures/bg3.png')
     // @ts-ignore
+    bg4 = loadImage('Pictures/bg4.png')
+    // @ts-ignore
+    bg45 = loadImage('Pictures/bg4.5.png')
+    // @ts-ignore
     playerimg = loadImage('Pictures/mc.png')
     // @ts-ignore
     nikiImg = loadImage('Pictures/niki.png')
@@ -326,6 +389,16 @@ var tekenVeld3 = function () {
     image(bg3, 0, 0, width, height);
 };
 
+var tekenVeld4 = function () {
+    //laad het achtegrond plaatje
+    image(bg4, 0, 0, width, height);
+};
+
+var tekenVeld45 = function () {
+    //laad het achtegrond plaatje
+    image(bg45, 0, 0, width, height);
+};
+
 /**
  * Tekent Niki Nihachu
  */
@@ -347,13 +420,6 @@ var tekenSpeler = function() {
   image(playerimg, spelerX, spelerY, 250, 207);
 }
 
-/**
- * Updatet globale variabelen met positie van Niki Nihachu
- */
-
-var beweegNiki = function() {
-    //DOES NIKI EVEN MOVE?
-}
 
 /**
  * Zorg ervoor dat A en D de beweegknoppen zijn
@@ -531,5 +597,92 @@ function levelOnePartThreeGamePlay(){
 }
 
 function levelTwoPartOneGamePlay(){
+    if (spelerX <= 1200 && spelerX >= 1050){
+        youTxt();
+        text(dialogScene2Part1[0], col1, row2, 500, 500);
+        text(dialogScene2Part1[2], col1, row3, 500, 500)
+        choiceNumber = 0;
+    }
+    if (keyIsDown (49)){ //"1" ingedrukt
+        spelerX = 1000;
+        choiceNumber = 1;}
+    if (keyIsDown (50)){ //"2" ingedrukt
+        spelerX = 1000;
+        choiceNumber = 2;
+    }
+    if(spelerX >= 850 && spelerX <= 1000 && choiceNumber == 1){
+        youTxt();
+        text(dialogScene2Part1[1], col1, row2, 500, 500);
+    }
+    if(spelerX >= 850 && spelerX <= 1000 && choiceNumber == 2){
+        youTxt();
+        text(dialogScene2Part1[3], col1, row2, 500, 500);
+    }
+    if(spelerX >= 600 && spelerX <850){
+        youTxt();
+        text(dialogScene2Part1[4], col1, row2, 500, 500);
+        text(dialogScene2Part1[5], col1, row3, 500, 500);
+    }
+    if (spelerX == 100){
+        //initialiseren variabelen lvl2.2
+        spelerX = 50
+        spelStatus = SPELEN_LVL2_2
+    }
+}
 
+function levelTwoPartTwoGamePlay() {
+    if (spelerX >= 50 && spelerX <= 150){
+        mushTxt();
+        text(dialogScene2Part2[0], col1, row2, 500, 500);
+        choiceNumber = 0;
+    }
+    if (spelerX > 150 && spelerX<= 300){
+        youTxt();
+        text(dialogScene2Part2[1], col1, row2, 500, 500)
+        text(dialogScene2Part2[3], col1, row4, 500, 500)
+    }
+    getChoice();
+    if (spelerX >= 360 && spelerX <= 450 && choiceNumber == 1){
+        mushTxt();
+        text(dialogScene2Part2[2], col1, row2, 500, 500)
+    }
+    if (spelerX >= 360 && spelerX <= 450 && choiceNumber == 2){
+        mushTxt();
+        text(dialogScene2Part2[4], col1, row2, 500, 500)
+    }
+    if (spelerX > 450 && spelerX <= 550){
+        mushTxt();
+        text(dialogScene2Part2[5], col1, row2, 500, 500);
+    }
+    if (spelerX > 550 && spelerX <= 650){
+        karlTxt();
+        text(dialogScene2Part2[6], col1, row2, 500, 500);
+        text(dialogScene2Part2[7], col1, row3, 500, 500);
+    }
+    if (spelerX > 650 && spelerX <= 750){
+        karlTxt();
+        text(dialogScene2Part2[8], col1, row2, 500, 500);
+        text(dialogScene2Part2[9], col1, row3, 500, 500);
+    }
+    if (spelerX > 750 && spelerX <= 850){
+        karlTxt();
+        text(dialogScene2Part2[10], col1, row2, 500, 500);
+    }
+    if (spelerX == 1200 ){
+        // Initialiseren variabelen lvl2.5
+        spelerX = 35;
+        spelStatus = SPELEN_LVL2_5;
+    }
+}
+
+function levelTwoPartFiveGamePlay(){
+    if (spelerX = 20){
+        //initaliseren variabelen lvl2.2
+        spelerX = 1150;
+        spelStatus = SPELEN_LVL2_2;
+    }
+    if (spelerX >= 35 && spelerX <= 100 ){
+        bookTxt();
+        //enter all
+    }
 }
