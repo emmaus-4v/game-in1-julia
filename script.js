@@ -9,6 +9,7 @@
 
 //Het level bijhouden
 const INTRO = 0;                // Openingsscherm
+const INTROLVL = 1;             // Hrt eerste level, laat zien hoe je moet bewegen, exitten en hoe je keuzes moet maken
 const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in README
@@ -16,7 +17,7 @@ const SPELEN_LVL2 = 20;         // Zie level 2 beschrijving in README
 const SPELEN_LVL3 = 30;         // Zie level 3 beschrijving in README
 const GAMEOVER = 100;           // Gameover scherm
 const CREDITS = 200;            // Laat alle credits zien
-var spelStatus = SPELEN_LVL1_1; // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
+var spelStatus = INTRO; // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
 
 var spelerX = 0;                // x-positie van speler
 var spelerY = 150;              // y-positie van speler
@@ -28,10 +29,14 @@ var karlX = 0;                  // x-positie van Karl Jacobs
 var karlY = 0;                  // y-positie van Karl Jacobs
 
 var score = 0;                  // aantal behaalde punten
+var teller = 0;
 
 var choiceNumber = 0;           // houdt de keuze bij die gemaakt is
+var startRegel1 = 720;
+var volgendeRegel = 0;
 
 // plaatjes
+var startbg;
 var bg1;
 var bg2;
 var bg3;
@@ -111,15 +116,16 @@ function draw() {
     switch (spelStatus) {
 
         case INTRO:
-            textSize(30);
-            text('Use the A and D keys to move', col1, row1, 500, 400)
-            text('Hit enter to start', col1, row2, 500, 500)
-            text('Hit alt for the credits', col1, row3, 500, 500)
+            tekenVeld0();
+            textSize(50);
+            fill('#1f4217')
+            text('Hit enter to start', col1, row1, 500, 500)
+            text('Hit "c" for the credits', col1, row3, 500, 500)
             //ADD ANY TYPE OF BACKGROUND PICTURE
             if (keyIsDown(13)) {
                 spelStatus = SPELEN_LVL1_1
             }
-            if (keyIsDown(18)) {
+            if (keyIsDown(67)) {
                 spelStatus = CREDITS
             }
         break;
@@ -154,7 +160,7 @@ function draw() {
             levelOnePartTwoGamePlay();
         break;
 
-case SPELEN_LVL1_3:
+        case SPELEN_LVL1_3:
             background(20, 10, 20);
             tekenVeld3();
             checkGameOver();
@@ -170,20 +176,60 @@ case SPELEN_LVL1_3:
         break;
 
         case GAMEOVER:
-            textSize (40);
-            background('white')
+            tekenVeld0();
+            textSize (50);
+            fill('#1f4217')
             text('Thanks for playing', 200, 200, 200, 200);
             text('Hit escape to restart', 500, 200, 200, 200);
             text('Press alt for the credits',600,200,200,200 )
         break;
 
         case CREDITS:
-
-        break;
+            tekenVeld0();
+            textSize(40);
+            teller = teller - 1;
+            if (teller == -1340){
+                teller = 0;
+            }
+            fill('#1f4217')
+            text('- Concept by : Julia Suijker',200, startRegel1 + teller,1000,1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Coded by: Julia Suijker', 200, startRegel1 + volgendeRegel + teller,1000,1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Guided by: Sander van Geest and Arno Suijker', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Inspired by: The Dream Smp; created by: Dream,', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('  Georgenotfound, Sapnap, Callahan and Awesamdude', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Inspired by: Undertale, undertale.com',200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Game template van het Emmauscollege Rotterdam:', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('  github.com/emmauscollege/4HV-game-template', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- manifest.json: codelabs.developers.google', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('  .com/codelabs/your-first-pwapp/#3', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Forest background: www.shutterstock.com/', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Nikis mountain background and the starting',200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('  background: Fez Escalante at www.behance.net',200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Nikis underground city background: Jungle house', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('  from the game terraria.org', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Base of all the characters: frisk from undertale.com', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)   
+            volgendeRegel = 0;       
   }
 }
 
 function preload(){
+    // @ts-ignore
+    startbg = loadImage('Pictures/stbg.jpg')
     // @ts-ignore
     bg1 = loadImage('Pictures/bg1.png');
     // @ts-ignore
@@ -198,6 +244,10 @@ function preload(){
     karlImg = loadImage('Pictures/karl.png')
 }
 
+var tekenVeld0 = function () {
+    //laad het achtegrond plaatje
+    image(startbg, 0, 0, width, height);
+};
 
 var tekenVeld1 = function () {
     //laad het achtegrond plaatje
