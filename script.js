@@ -279,7 +279,7 @@ function draw() {
         break;
 
         case SPELEN_LVL2_5:
-            tekenVeld4();
+            tekenVeld45();
             checkGameOver();
 
             beweegSpeler();
@@ -657,7 +657,7 @@ function levelTwoPartTwoGamePlay() {
     if (spelerX > 550 && spelerX <= 650){
         karlTxt();
         text(dialogScene2Part2[6], col1, row2, 500, 500);
-        text(dialogScene2Part2[7], col1, row3, 500, 500);
+        text(dialogScene2Part2[7], col1, row4, 500, 500);
     }
     if (spelerX > 650 && spelerX <= 750){
         karlTxt();
@@ -670,19 +670,19 @@ function levelTwoPartTwoGamePlay() {
     }
     if (spelerX == 1200 ){
         // Initialiseren variabelen lvl2.5
-        spelerX = 35;
+        spelerX = 1200;
         spelStatus = SPELEN_LVL2_5;
     }
 }
-
+//fix het begin van het nieuwe lvl
 function levelTwoPartFiveGamePlay(){
     if (spelerX = 20){
         //initaliseren variabelen lvl2.2
         spelerX = 1150;
         spelStatus = SPELEN_LVL2_2;
     }
-    if (spelerX >= 35 && spelerX <= 100 ){
+    if (spelerX >= 50 && spelerX <= 100 ){
         bookTxt();
-        //enter all
+        //enter all the new text from scene2.5
     }
 }
