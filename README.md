@@ -64,9 +64,9 @@ donderdag
 - [X] move player
 vrijdag
 - [X] dialog text
-- [ ] dialog options
-- [-] add other character
-- [ ] find character picture
+- [X] dialog options
+- [X] add other character
+- [X] find character picture
 zaterdag
 - [ ] intro level
 - [ ] make at least 2nd level

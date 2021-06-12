@@ -7,31 +7,39 @@
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
 
-const INTRO = 0;               // Spelinstructies
+//Het level bijhouden
+const INTRO = 0;                // Spelinstructies
 const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in README
+const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in README
 const SPELEN_LVL2 = 20;         // Zie level 2 beschrijving in README
 const SPELEN_LVL3 = 30;         // Zie level 3 beschrijving in README
-const GAMEOVER = 100;          // Gameover scherm
-const CREDITS = 200;           // Laat alle credits zien
-var spelStatus = SPELEN_LVL1_1;  // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
+const GAMEOVER = 100;           // Gameover scherm
+const CREDITS = 200;            // Laat alle credits zien
+var spelStatus = SPELEN_LVL1_1; // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
 
-var spelerX = 0;             // x-positie van speler
-var spelerY = 150;             // y-positie van speler
+var spelerX = 0;                // x-positie van speler
+var spelerY = 150;              // y-positie van speler
 
-var nikiX = 1050;                 // x-positie van Niki Nihachu
-var nikiY = 300;                 // y-positie van Niki Nihachu
+var nikiX = 1050;               // x-positie van Niki Nihachu
+var nikiY = 150;                // y-positie van Niki Nihachu
 
-var karlX = 0;                 // x-positie van Karl Jacobs
-var karlY = 0;                 // y-positie van Karl Jacobs
+var karlX = 0;                  // x-positie van Karl Jacobs
+var karlY = 0;                  // y-positie van Karl Jacobs
 
-var score = 0;                 // aantal behaalde punten
+var score = 0;                  // aantal behaalde punten
 
-var choiceNumber = 0;
+var choiceNumber = 0;           // houdt de keuze bij die gemaakt is
 
+// plaatjes
 var bg1;
+var bg2;
+var bg3;
 var playerimg;
+var nikiImg;
+var karlImg;
 
+// de X & Y coordinaten van alle text
 var row1 = 475;
 var row2 = 515;
 var row3 = 555;
@@ -47,17 +55,19 @@ var playerName = ("INSERT NAME HERE")
 
 var characterNames = ["Niki Nihachu”,“Karl Jacobs”, “Tommy Innit”, “Wilbur Soot”, “Quackity”, “Tubbo”, “Technoblade”, “J. Schlatt",]
 
-var youTxt = function(){
+var youTxt = function(){ // als de speler praat
     textSize (30);
     fill('#ede6ea');
     text ("You:",col1 ,row1 ,500,500);
 }
 
-var ladyTxt = function(){
+var ladyTxt = function(){ // als Niki (nu nog onbekend) praat
     textSize (30);
     fill('#f7add7');
     text ("Strange Lady:",col1,row1,500,500);
 }
+
+
 
 //dialoog arrays
 var dialogScene1Part1 = [
@@ -87,41 +97,122 @@ var dialogScene1Part3 = [
 ];
 
 /* ********************************************* */
-/*      functies die je gebruikt in je game      */
+/*                 basisfuncties                 */
 /* ********************************************* */
 
+function draw() {
+    if (keyIsDown(27)) {
+          spelStatus = INTRO
+    }
+
+    switch (spelStatus) {
+
+        case INTRO:
+            textSize(30);
+            text('Use the A and D keys to move', 420, 300, 500, 400)
+            text('Hit enter to start', 500, 500, 500, 500)
+            /**var img1   
+            img1 = image('Pictures\background1.png', 100, 100);**/
+
+            if (keyIsDown(13)) {
+                spelStatus = SPELEN_LVL1_1
+            }
+
+        break;
+
+        case SPELEN_LVL1_1:
+            background(20, 10, 20);
+            tekenVeld1();
+            beweegNiki();
+
+            beweegSpeler();
+            
+
+            tekenNiki();
+            tekenSpeler();
+            
+            levelOnePartOneGamePlay();
+        break;
+
+        case SPELEN_LVL1_2:
+            background(20, 10, 20);
+            tekenVeld2();
+            beweegNiki();
+
+            beweegSpeler();
+            
+
+            tekenNiki();
+            tekenSpeler();
+        
+            levelOnePartTwoGamePlay();
+        break;
+
+case SPELEN_LVL1_3:
+            background(20, 10, 20);
+            tekenVeld3();
+            beweegNiki();
+
+            beweegSpeler();
+            
+
+            tekenNiki();
+            tekenSpeler();
+        
+            levelOnePartThreeGamePlay();
+        break;
+
+        case GAMEOVER:
+            background('white')
+            text('GAMEOVER', 200, 200, 200, 200);
+            text('Hit escape to restart', 500, 200, 200, 200);
+        break;
+  }
+}
+
 function preload(){
+    // @ts-ignore
     bg1 = loadImage('Pictures/bg1.png');
-    playerimg = loadImage('Pictures/frisk.png')
+    // @ts-ignore
+    bg2 = loadImage('Pictures/bg2.jpg')
+    // @ts-ignore
+    bg3 = loadImage('Pictures/bg3.png')
+    // @ts-ignore
+    playerimg = loadImage('Pictures/mc.png')
+    // @ts-ignore
+    nikiImg = loadImage('Pictures/niki.png')
+    // @ts-ignore
+    karlImg = loadImage('Pictures/karl.png')
 }
 
 
-//Tekent het speelveld
-var tekenVeld = function () {
-    // background('blue');
-    // Achtergrond plaatje
+var tekenVeld1 = function () {
+    //laad het achtegrond plaatje
     image(bg1, 0, 0, width, height);
-
 };
 
+var tekenVeld2 = function () {
+    //laad het achtegrond plaatje
+    image(bg2, 0, 0, width, height);
+};
+
+var tekenVeld3 = function () {
+    //laad het achtegrond plaatje
+    image(bg3, 0, 0, width, height);
+};
 
 /**
  * Tekent Niki Nihachu
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
  */
-var tekenNiki = function(x, y) {
-    fill ("pink");
-    ellipse (x, y, 100, 100);
+var tekenNiki = function() {
+    image(nikiImg, nikiX, nikiY, 250, 207);
 }
 
 
 /**
  * Tekent de speler
- * @param {number} x x-coördinaat
- * @param {number} y y-coördinaat
  */
-var tekenSpeler = function(x, y) {
+var tekenSpeler = function() {
   image(playerimg, spelerX, spelerY, 250, 207);
 }
 
@@ -158,18 +249,6 @@ var checkGameOver = function() {
 }
 
 
-/** function startUp(){
-    beweegVijand();
-    beweegSpeler();
-      
-
-    tekenVeld();
-    tekenVijand(vijandX, vijandY);
-    tekenSpeler(spelerX, spelerY);
-
-}
-**/
-
 function getChoice (){
     if (keyIsDown (49)){ //"1" ingedrukt
         spelerX = 360;
@@ -180,6 +259,21 @@ function getChoice (){
     }
 }
 
+
+/**
+ * setup
+ * de code in deze functie wordt één keer uitgevoerd door
+ * de p5 library, zodra het spel geladen is in de browser
+ */
+function setup() {
+    createCanvas(1280, 720);  //Maakt het canvas
+    background('blue');       // Maakt de achtergrond blauw
+ //rect(30, 20, 55, 55);    //REMOVE THIS WHEN DONE
+}
+
+/* ********************************************* */
+/*               gameplay functies               */
+/* ********************************************* */
 
 function levelOnePartOneGamePlay(){
     if (spelerX >= 50 && spelerX <= 300) {
@@ -204,7 +298,7 @@ function levelOnePartOneGamePlay(){
     if (spelerX == 1250){ 
         //Initialiseren varibelen lvl 1.2
         spelerX = 0;
-        nikiX = 150;
+        nikiX = 500;
         spelStatus = SPELEN_LVL1_2;
     }
 }
@@ -213,6 +307,7 @@ function levelOnePartTwoGamePlay(){
     if (spelerX >= 50 && spelerX <= 250){
         ladyTxt();
         text(dialogScene1Part2[0],col1, row2, 500, 500)
+        choiceNumber = 0; //reset de keuze
     }
     if (spelerX > 250 && spelerX <=350){
         youTxt();
@@ -228,79 +323,24 @@ function levelOnePartTwoGamePlay(){
         ladyTxt();
         text(dialogScene1Part2[4],col1, row2,500,500)
     }
-}
-
-/**
- * setup
- * de code in deze functie wordt één keer uitgevoerd door
- * de p5 library, zodra het spel geladen is in de browser
- */
-function setup() {
-    createCanvas(1280, 720);  //Maakt het canvas
-    background('blue');       // Maakt de achtergrond blauw
- //rect(30, 20, 55, 55);    //REMOVE THIS WHEN DONE
-}
-
-
-/**
- * draw
- * de code in deze functie wordt meerdere keren per seconde
- * uitgevoerd door de p5 library, nadat de setup functie klaar is
- */
-function draw() {
-    if (keyIsDown(27)) {
-          spelStatus = INTRO
+    if (spelerX == 400){
+        //Initialiseren variabelen lvl1.3
+        spelerX = 250;
+        spelerY = 125
+        nikiX = 600;
+        nikiY = 170;
+        spelStatus = SPELEN_LVL1_3;
     }
+}
 
-    switch (spelStatus) {
-
-        case INTRO:
-            textSize(30);
-            text('Use the A and D keys to move', 420, 300, 500, 400)
-            text('Hit enter to start', 500, 500, 500, 500)
-            /**var img1   
-            img1 = image('Pictures\background1.png', 100, 100);**/
-
-            if (keyIsDown(13)) {
-                spelStatus = SPELEN_LVL1_1
-            }
-
-        break;
-
-        case SPELEN_LVL1_1:
-            background(20, 10, 20);
-            tekenVeld();
-            image(bg1, 0, 0, width, height);
-            beweegNiki();
-
-            beweegSpeler();
-            
-
-            tekenNiki(nikiX, nikiY);
-            tekenSpeler(spelerX, spelerY);
-            
-            levelOnePartOneGamePlay();
-        break;
-
-        case SPELEN_LVL1_2:
-            background(20, 10, 20);
-            tekenVeld();
-            image(bg1, 0, 0, width, height);
-            beweegNiki();
-
-            beweegSpeler();
-            
-
-            tekenNiki(nikiX, nikiY);
-            tekenSpeler(spelerX, spelerY);
+function levelOnePartThreeGamePlay(){
+    if (spelerX <= 260){
+        ladyTxt();
+        text(dialogScene1Part3[0],col1, row2, 500, 500)
+        choiceNumber = 0;
+    }
+    if (spelerX>260 && spelerX <= 315 ){
+        youTxt();
         
-            levelOnePartTwoGamePlay();
-        break;
-
-        case GAMEOVER:
-            background('white')
-            text('GAMEOVER', 200, 200, 200, 200);
-            text('Hit escape to restart', 500, 200, 200, 200);
-        break;
-  }
+    }
 }
