@@ -26,9 +26,18 @@ Uitbreiding:
 - [ ] Relationship stats
 
 ## Credits
+- Concept by : Julia Suijker
+- Coded by: Julia Suijker
+- Guided by: Sander van Geest and Arno Suijker
+- Inspired by: The Dream Smp; created by: Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
+- Inspired by: Undertale, https://undertale.com
 - Game template van het Emmauscollege Rotterdam: https://github.com/emmauscollege/4HV-game-template
 - manifest.json: https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
 - Forest background: https://www.shutterstock.com/
+- Niki's mountain background: Fez Escalante at https://www.behance.net
+- Niki's underground city background: Jungle house from the game https://terraria.org
+- Base of all the characters: frisk from https://undertale.com
+
 
 Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
 
@@ -78,42 +87,11 @@ zondag
 
 ## Extra's
 - to do intro: Logo onscreen, start button, credit button
-- to do credits: make list of artists artwork, credit cc's, credit teacher, credit yourself, have a button to go back to homescreen
-- to do lvls : Background function; Startup function; Dialog function; Characters function; Have the lvl change; relationship stats
-- to do end screen: say thanks for playing; credits button, homescreen button
+- to do credits: make list of artists artwork, credit cc's, have a button to go back to homescreen
+- to do lvls : relationship stats
+- to do end screen: credits button,
 - to do art: logo, backgrounds, character art
 
-
-## Credits text
-- concept by : Julia Suijker
-- inspired by: The Dream Smp, created by Dream, Georgenotfound, Sapnap, Callahan and Awesamdude
-- coded by: Julia Suijker
-- guided by: Sander van Geest and Arno Suijker
-
-
-## Script, for copy pasting
-
-Scene 1
-Ah, I see you've finally awoken.
-Now, now. No reason to attack me, I'm just trying to help you.
-Follow me darling. I can take care of you once we reach the city.
-
-Here we are the beautiful entrance to my city!
-But cities cant be underground?
-Of course theycan silly! I built this city all by myself! I spent a lot of time excavating all that stone.
-Why is it so hidden? Are you hiding from someone?
-My city is a haven for those who are lost, scared or still searching.
-
-Isn't it beautiful? Wouldn't you want to stay here forever?
-No! Are you insane lady?
-Oh, I just thought it would have been nice for you to stay a while...
-Oh, no thank you ma'am, I still have so much of the world left to explore!
-That's alright, just know the city will always be available in case you need a place to stay!
-
-So I guess this is goodbye then, I didn't even catch your name before you wanted to leave...
-Oh! My name is: INSERT NAME Here
-Well then, NAME, I wish you well, I hope we see each other again. Safe travels!
-Thank you
 
 ## Storyline/Bulletpoints
 Level 1 - The beginning

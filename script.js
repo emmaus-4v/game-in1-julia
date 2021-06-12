@@ -8,7 +8,7 @@
 /* ********************************************* */
 
 //Het level bijhouden
-const INTRO = 0;                // Spelinstructies
+const INTRO = 0;                // Openingsscherm
 const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in README
@@ -112,14 +112,16 @@ function draw() {
 
         case INTRO:
             textSize(30);
-            text('Use the A and D keys to move', 420, 300, 500, 400)
-            text('Hit enter to start', 500, 500, 500, 500)
+            text('Use the A and D keys to move', col1, row1, 500, 400)
+            text('Hit enter to start', col1, row2, 500, 500)
+            text('Hit alt for the credits', col1, row3, 500, 500)
             //ADD ANY TYPE OF BACKGROUND PICTURE
-
             if (keyIsDown(13)) {
                 spelStatus = SPELEN_LVL1_1
             }
-
+            if (keyIsDown(18)) {
+                spelStatus = CREDITS
+            }
         break;
 
         case SPELEN_LVL1_1:
@@ -168,12 +170,15 @@ case SPELEN_LVL1_3:
         break;
 
         case GAMEOVER:
+            textSize (40);
             background('white')
-            text('GAMEOVER', 200, 200, 200, 200);
+            text('Thanks for playing', 200, 200, 200, 200);
             text('Hit escape to restart', 500, 200, 200, 200);
-            if (keyIsPressed(27)){
-                spelStatus = INTRO
-            }
+            text('Press alt for the credits',600,200,200,200 )
+        break;
+
+        case CREDITS:
+
         break;
   }
 }
@@ -253,7 +258,7 @@ var beweegSpeler = function() {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    if (keyIsDown(27)){
+    if (keyIsDown(17)){
         spelStatus = GAMEOVER
     }
     else{
