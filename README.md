@@ -28,7 +28,6 @@ Uitbreiding:
 ## Credits
 - Game template van het Emmauscollege Rotterdam: https://github.com/emmauscollege/4HV-game-template
 - manifest.json: https://codelabs.developers.google.com/codelabs/your-first-pwapp/#3
-- icon: http://www.iconarchive.com/show/android-lollipop-icons-by-dtafalonso/Play-Games-icon.html
 - Forest background: https://www.shutterstock.com/
 
 Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
@@ -69,7 +68,7 @@ vrijdag
 - [X] find character picture
 zaterdag
 - [ ] intro level
-- [ ] make at least 2nd level
+- [-] make at least 2nd level
 - [ ] endscreen & credits
 zondag
 - [ ] intro screen

@@ -2,8 +2,8 @@
   "name": "Under the SMP",
   "short_name": "Game",
   "icons": [{
-    "src": "icon-512x512.png",
-      "sizes": "512x512",
+    "src": "Pictures/logo.png",
+      "sizes": "185x185",
       "type": "image/png"
     }],
   "start_url": "index.html",

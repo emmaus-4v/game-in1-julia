@@ -89,10 +89,13 @@ var dialogScene1Part2 = [
 ];
 
 var dialogScene1Part3 = [
+    //question 2
     "Isn't it beautiful? Wouldn't you want to stay here forever?", 
-    "No! Are you insane lady?", 
+    //answer 1 + response
+    "1. No! Are you insane lady?", 
     "Oh, I just thought it would have been nice for you to stay a while...", 
-    "Oh, no thank you ma'am, I still have so much of the world left to explore!", 
+    //answer 2 + response
+    "2. Oh, no thank you ma'am, I still have so much of the world left to explore!", 
     "That's alright, just know the city will always be available in case you need a place to stay!"
 ];
 
@@ -111,8 +114,7 @@ function draw() {
             textSize(30);
             text('Use the A and D keys to move', 420, 300, 500, 400)
             text('Hit enter to start', 500, 500, 500, 500)
-            /**var img1   
-            img1 = image('Pictures\background1.png', 100, 100);**/
+            //ADD ANY TYPE OF BACKGROUND PICTURE
 
             if (keyIsDown(13)) {
                 spelStatus = SPELEN_LVL1_1
@@ -123,8 +125,9 @@ function draw() {
         case SPELEN_LVL1_1:
             background(20, 10, 20);
             tekenVeld1();
-            beweegNiki();
+            checkGameOver();
 
+            beweegNiki();
             beweegSpeler();
             
 
@@ -137,8 +140,9 @@ function draw() {
         case SPELEN_LVL1_2:
             background(20, 10, 20);
             tekenVeld2();
-            beweegNiki();
+            checkGameOver();
 
+            beweegNiki();
             beweegSpeler();
             
 
@@ -151,8 +155,9 @@ function draw() {
 case SPELEN_LVL1_3:
             background(20, 10, 20);
             tekenVeld3();
-            beweegNiki();
+            checkGameOver();
 
+            beweegNiki();
             beweegSpeler();
             
 
@@ -166,6 +171,9 @@ case SPELEN_LVL1_3:
             background('white')
             text('GAMEOVER', 200, 200, 200, 200);
             text('Hit escape to restart', 500, 200, 200, 200);
+            if (keyIsPressed(27)){
+                spelStatus = INTRO
+            }
         break;
   }
 }
@@ -245,8 +253,14 @@ var beweegSpeler = function() {
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-  return false;
+    if (keyIsDown(27)){
+        spelStatus = GAMEOVER
+    }
+    else{
+        return false;
+    }
 }
+
 
 
 function getChoice (){
@@ -334,13 +348,23 @@ function levelOnePartTwoGamePlay(){
 }
 
 function levelOnePartThreeGamePlay(){
-    if (spelerX <= 260){
+    if (spelerX <= 275){
         ladyTxt();
-        text(dialogScene1Part3[0],col1, row2, 500, 500)
+        text(dialogScene1Part3[0],col1,row2,500,500)
         choiceNumber = 0;
     }
-    if (spelerX>260 && spelerX <= 315 ){
+    if (spelerX>275 && spelerX <= 330 ){
         youTxt();
-        
+        text(dialogScene1Part3[1],col2,row2,500,500)
+        text(dialogScene1Part3[3],col2,row3,500,500)
+    }
+    getChoice();
+    if (spelerX >= 360 && spelerX < 400 && choiceNumber == 1){
+        ladyTxt();
+        text(dialogScene1Part3[2],col1, row2,500,500)
+    }
+    if (spelerX == 360 && spelerX < 400 && choiceNumber == 2){
+        ladyTxt();
+        text(dialogScene1Part3[4],col1, row2,500,500)
     }
 }
