@@ -16,10 +16,10 @@ const CREDITS = 200;           // Laat alle credits zien
 var spelStatus = INTRO;  // DIT MOET NOG VERANDERD WORDEN NAAR INTRO, MAAR PAS DOEN ALS ALLES WERKT
 
 var spelerX = 20;             // x-positie van speler
-var spelerY = 200;             // y-positie van speler
+var spelerY = 300;             // y-positie van speler
 
 var nikiX = 300;                 // x-positie van Niki Nihachu
-var nikiY = 200;                 // y-positie van Niki Nihachu
+var nikiY = 300;                 // y-positie van Niki Nihachu
 
 var karlX = 0;                 // x-positie van Karl Jacobs
 var karlY = 0;                 // y-positie van Karl Jacobs
@@ -27,6 +27,8 @@ var karlY = 0;                 // y-positie van Karl Jacobs
 var score = 0;                 // aantal behaalde punten
 
 var speed = 5; //IS DIT ECHT NODIG?
+
+var bg1;
 
 /* ********************************************* */
 /*            variabelen voor gameplay           */
@@ -36,6 +38,15 @@ var playerName = ("INSERT NAME HERE")
 
 var characterNames = ["Niki Nihachu”,“Karl Jacobs”, “Tommy Innit”, “Wilbur Soot”, “Quackity”, “Tubbo”, “Technoblade”, “J. Schlatt",]
 
+var youTxt = function(){
+    fill('#ede6ea');
+    text ("You: ",425, 475,500,500);
+}
+
+var ladyTxt = function(){
+    fill('#f7add7');
+    text ("Strange Lady: ",425, 475,500,500);
+}
 
 //dialoog arrays
 var dialogScene1Part1 = [
@@ -65,12 +76,18 @@ var dialogScene1Part3 = [
 /*      functies die je gebruikt in je game      */
 /* ********************************************* */
 
+function preload(){
+    bg1 = loadImage('Pictures/bg1.png');
+}
+
 
 //Tekent het speelveld
 var tekenVeld = function () {
-  fill('red');
-  rect(20, 20, width - 2 * 20, height - 2 * 20);
-}
+    // background('blue');
+    // Achtergrond plaatje
+    image(bg1, 0, 0, width, height);
+
+};
 
 
 /**
@@ -140,16 +157,24 @@ var checkGameOver = function() {
 **/
 
 
-function levelOneGamePlay(){ // ADD THE PLACEMENT FOR THE TEXT, ALSO IMPLEMENT IT INTO THE CODE
+function levelOneGamePlay(){
     textSize (30);
-    if (spelerX > 50 && spelerX < 150)
-        text ("Ah, I see you've finally awoken.",500, 500, 500, 500)
-    if (spelerX > 150 && spelerX < 250)
-        text ("Who the hell are you!",500, 500, 500, 500)
-    if (spelerX > 250 && spelerX <350 )
-        text ("Now, now. No reason to threaten me, I'm just trying to help you.",500, 500, 500, 500)
-    if (spelerX > 350 && spelerX < 450)
-        text ('Follow me darling, I can take care of you once we reach the city',500, 500, 500, 500)
+    if (spelerX >= 50 && spelerX <= 150) {
+        ladyTxt()
+        text (dialogScene1Part1[1],425, 550,500,500);
+    }
+    if (spelerX > 150 && spelerX <= 250) {
+        youTxt();
+        text ("Who the hell are you!",425, 550,500,500);
+    }
+    if (spelerX > 250 && spelerX <=350 ){
+        ladyTxt();
+        text ("Now, now. No reason to threaten me, I'm just trying to help you.",375, 525,500,500);
+    }
+    if (spelerX > 350 && spelerX <= 450){ 
+        ladyTxt();
+        text ('Follow me darling, I can take care of you once we reach the city',350, 525,500,500);
+    }
 }
 
 
@@ -193,6 +218,7 @@ function draw() {
         case SPELEN_LVL1:
             background(20, 10, 20);
             tekenVeld();
+            image(bg1, 0, 0, width, height);
             beweegNiki();
 
             beweegSpeler();
@@ -202,7 +228,6 @@ function draw() {
             tekenSpeler(spelerX, spelerY);
             
             levelOneGamePlay();
-
         break;
 
         case GAMEOVER:
