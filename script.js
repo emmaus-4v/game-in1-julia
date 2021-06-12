@@ -13,7 +13,7 @@ const INTROLVL = 1;             // Hrt eerste level, laat zien hoe je moet beweg
 const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in README
 const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in README
-const SPELEN_LVL2 = 20;         // Zie level 2 beschrijving in README
+const SPELEN_LVL2_1 = 20;         // Zie level 2 beschrijving in README
 const SPELEN_LVL3 = 30;         // Zie level 3 beschrijving in README
 const GAMEOVER = 100;           // Gameover scherm
 const CREDITS = 200;            // Laat alle credits zien
@@ -37,6 +37,7 @@ var volgendeRegel = 0;
 
 // plaatjes
 var startbg;
+var bg0;
 var bg1;
 var bg2;
 var bg3;
@@ -60,6 +61,11 @@ var playerName = ("INSERT NAME HERE")
 
 var characterNames = ["Niki Nihachu”,“Karl Jacobs”, “Tommy Innit”, “Wilbur Soot”, “Quackity”, “Tubbo”, “Technoblade”, “J. Schlatt",]
 
+var compTxt = function(){ // als de computer praat in het intro level
+    textSize (30);
+    fill("white");
+}
+
 var youTxt = function(){ // als de speler praat
     textSize (30);
     fill('#ede6ea');
@@ -72,6 +78,11 @@ var ladyTxt = function(){ // als Niki (nu nog onbekend) praat
     text ("Strange Lady:",col1,row1,500,500);
 }
 
+var mushTxt = function(){ //mushroom boy dialogue
+    textSize (30);
+    fill('#ab1a00');
+    text("Mushroom man", col1, row1, 500, 500)
+}
 
 
 //dialoog arrays
@@ -104,6 +115,27 @@ var dialogScene1Part3 = [
     "That's alright, just know the city will always be available in case you need a place to stay!"
 ];
 
+var dialogScene2Part1 = [
+    
+]
+
+var dialogScene2Part2 = [
+    //question 3
+    "Who are you? What business do you have here?",
+    //answer 1 + response
+    "1. Here? Dude I don't even know where I am!",
+    "You’re in Kinoko Kingdom, and I am the king",
+    //answer 2 + response
+    "I have business with your mom",
+    "Okay, that was kind of funny, I’ll give you that",
+    //The rest of Karl's monologue
+    "You’re really not from around here, are you?",
+    "Stranger, I request that you leave Kinoko Kingdom at once",
+    "As it is a matter of national security declared by king Karl",
+    "Oh, and stranger",
+    "Stay clear of the nation over the hills"
+]
+
 /* ********************************************* */
 /*                 basisfuncties                 */
 /* ********************************************* */
@@ -116,22 +148,35 @@ function draw() {
     switch (spelStatus) {
 
         case INTRO:
-            tekenVeld0();
+            tekenVeldST();
             textSize(50);
             fill('#1f4217')
             text('Hit enter to start', col1, row1, 500, 500)
             text('Hit "c" for the credits', col1, row3, 500, 500)
             //ADD ANY TYPE OF BACKGROUND PICTURE
             if (keyIsDown(13)) {
-                spelStatus = SPELEN_LVL1_1
+                //intitialiseren variabelen
+                spelerX = 20
+                spelStatus = INTROLVL
             }
             if (keyIsDown(67)) {
                 spelStatus = CREDITS
             }
         break;
 
+        case INTROLVL:
+            tekenVeld0();
+            checkGameOver();
+
+            beweegSpeler();
+
+            tekenSpeler();
+            
+            levelZeroGamePlay();
+        
+        break;
+
         case SPELEN_LVL1_1:
-            background(20, 10, 20);
             tekenVeld1();
             checkGameOver();
 
@@ -146,7 +191,6 @@ function draw() {
         break;
 
         case SPELEN_LVL1_2:
-            background(20, 10, 20);
             tekenVeld2();
             checkGameOver();
 
@@ -156,12 +200,11 @@ function draw() {
 
             tekenNiki();
             tekenSpeler();
-        
+            
             levelOnePartTwoGamePlay();
         break;
 
         case SPELEN_LVL1_3:
-            background(20, 10, 20);
             tekenVeld3();
             checkGameOver();
 
@@ -175,8 +218,20 @@ function draw() {
             levelOnePartThreeGamePlay();
         break;
 
+        case SPELEN_LVL2_1:
+            tekenVeld1();
+            checkGameOver();
+
+            beweegSpeler();
+            
+
+            tekenSpeler();
+        
+            levelTwoPartOneGamePlay();
+        break;
+
         case GAMEOVER:
-            tekenVeld0();
+            tekenVeldST();
             textSize (50);
             fill('#1f4217')
             text('Thanks for playing', 200, 200, 200, 200);
@@ -185,7 +240,7 @@ function draw() {
         break;
 
         case CREDITS:
-            tekenVeld0();
+            tekenVeldST();
             textSize(40);
             teller = teller - 1;
             if (teller == -1340){
@@ -231,6 +286,8 @@ function preload(){
     // @ts-ignore
     startbg = loadImage('Pictures/stbg.jpg')
     // @ts-ignore
+    bg0 = loadImage('Pictures/bg0.png')
+    // @ts-ignore
     bg1 = loadImage('Pictures/bg1.png');
     // @ts-ignore
     bg2 = loadImage('Pictures/bg2.jpg')
@@ -244,9 +301,14 @@ function preload(){
     karlImg = loadImage('Pictures/karl.png')
 }
 
-var tekenVeld0 = function () {
+var tekenVeldST = function () {
     //laad het achtegrond plaatje
     image(startbg, 0, 0, width, height);
+};
+
+var tekenVeld0 = function () {
+    //laad het achtegrond plaatje
+    image(bg0, 0, 0, width, height);
 };
 
 var tekenVeld1 = function () {
@@ -271,6 +333,12 @@ var tekenNiki = function() {
     image(nikiImg, nikiX, nikiY, 250, 207);
 }
 
+/**
+ * Tekent Karl Jacobs
+ */
+var tekenKarl = function() {
+    image(karlImg, karlX, karlY, 250, 207);
+}
 
 /**
  * Tekent de speler
@@ -279,7 +347,6 @@ var tekenSpeler = function() {
   image(playerimg, spelerX, spelerY, 250, 207);
 }
 
-
 /**
  * Updatet globale variabelen met positie van Niki Nihachu
  */
@@ -287,7 +354,6 @@ var tekenSpeler = function() {
 var beweegNiki = function() {
     //DOES NIKI EVEN MOVE?
 }
-
 
 /**
  * Zorg ervoor dat A en D de beweegknoppen zijn
@@ -302,21 +368,18 @@ var beweegSpeler = function() {
     }
 }
 
-
 /**
  * Zoekt uit of het spel is afgelopen
  * @returns {boolean} true als het spel is afgelopen
  */
 var checkGameOver = function() {
-    if (keyIsDown(17)){
+    if (keyIsDown(17)){ //cntrl
         spelStatus = GAMEOVER
     }
     else{
         return false;
     }
 }
-
-
 
 function getChoice (){
     if (keyIsDown (49)){ //"1" ingedrukt
@@ -327,7 +390,6 @@ function getChoice (){
         choiceNumber = 2;
     }
 }
-
 
 /**
  * setup
@@ -343,6 +405,44 @@ function setup() {
 /* ********************************************* */
 /*               gameplay functies               */
 /* ********************************************* */
+
+function levelZeroGamePlay(){
+    if (spelerX >= 20 && spelerX <= 100 ){
+        compTxt();
+        text("Hello, welcome to 'Under the Smp'", col1, row1, 500, 500)
+        text("Use the 'a' and 'd' keys to move", col1, row2, 500, 500)
+        text("Use the escape key to return to the home screen at any time", col1, row3, 500, 500)
+    }
+    if (spelerX > 100 && spelerX <= 250 ){
+        compTxt();
+        text("Use the control key to end the game instantly", col1, row1, 500, 500)
+        text("Use the '1' and '2' keys to make dialog choices", col1, row3, 500, 500)
+    }
+    if (spelerX > 250 && spelerX <= 350){
+        compTxt();
+        text("1. You'll get choices that look like this", col1, row1, 500, 500)
+        text("2. Or like this", col1, row3, 500, 500)
+    }
+    getChoice();
+    if (choiceNumber == 1 && spelerX >= 360 && spelerX < 430){
+        compTxt();
+        text("Good job! You're getting the hang of it", col1, row1, 500, 500)
+    }
+    if (choiceNumber == 2 && spelerX >= 360 && spelerX < 430){
+        compTxt();
+        text("Good job! You're getting the hang of it", col1, row1, 500, 500)
+    }
+    if (spelerX > 430 && spelerX <= 550){
+        compTxt();
+        text("You're ready to wake up now", col1, row1, 500, 500)
+        text("Press 'g' to go'", col1, row2, 500, 500)
+    }
+    if (keyIsDown(71)) {
+        //intitialiseren variabelen lvl1.1
+        spelerX = 20
+        spelStatus = SPELEN_LVL1_1
+    }
+}
 
 function levelOnePartOneGamePlay(){
     if (spelerX >= 50 && spelerX <= 300) {
@@ -422,4 +522,14 @@ function levelOnePartThreeGamePlay(){
         ladyTxt();
         text(dialogScene1Part3[4],col1, row2,500,500)
     }
+    if (spelerX == 370){
+        //initialiseren variabelen lvl2.1
+        spelerX = 1200;
+        spelerY = 150;
+        spelStatus = SPELEN_LVL2_1
+    }
+}
+
+function levelTwoPartOneGamePlay(){
+
 }

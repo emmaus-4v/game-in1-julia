@@ -18,7 +18,7 @@ Basis: uitleg, spelen, afgaan en punten
 Uitbreiding:
 - [X] Dialoog, en opties voor dialoog
 - [ ] name insert
-- [ ] Geluidseffecten en muziek
+- [X] Rollende credits
 
 Uitbreiding:
 - [ ] Elk individuele karakter uitwerken (alle 9)
@@ -52,14 +52,14 @@ Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5z
 - [ ] Eenvoudig om me te beginnen, moeilijker als je verder komt
 - [ ] Afwisseling
 
-- [ ] Code volgt de lijn van de template
+- [X] Code volgt de lijn van de template
 - [ ] Code is netjes en duidelijk leesbaar
 - [ ] Code bevat geen dubbele stukjes code
-- [ ] Je hebt technieken gebruikt die zijn aangeboden
-- [ ] Je hebt dingen toegevoegd waarven je zelf hebt onderzocht hoe ze werken
+- [X] Je hebt technieken gebruikt die zijn aangeboden
+- [X] Je hebt dingen toegevoegd waarven je zelf hebt onderzocht hoe ze werken
 
 - [X] Je toont inzet tijdens de lessen
-- [ ] De planning is vooraf gemaakt, gevolgd en aangepast
+- [X] De planning is vooraf gemaakt, gevolgd en aangepast
 - [X] Werk is verdeeld over de weken waarin het project gewerkt
 
 ## To do
@@ -76,18 +76,15 @@ vrijdag
 - [X] add other character
 - [X] find character picture
 zaterdag
-- [ ] intro level
+- [X] intro level
 - [-] make at least 2nd level
-- [ ] endscreen & credits
+- [X] endscreen & credits
 zondag
-- [ ] intro screen
+- [X] intro screen
 - [ ] relationship stats
 - [ ] any other levels you can manage
 
 
 ## Extra's
-- to do intro: Logo onscreen, start button, credit button
-- to do intro lvl: uitleg voor alles
-- to do credits: make list of artists artwork, credit cc's, have a button to go back to homescreen
-- to do lvls : relationship stats
+- to do lvls : relationship stats?
 - to do art: logo, backgrounds, character art
