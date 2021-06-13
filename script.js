@@ -415,6 +415,18 @@ function draw() {
             level3Part1GamePlay();
         break;
 
+        case SPELEN_LVL3_1:
+            tekenVeld6();
+            checkGameOver();
+
+            beweegSpeler();
+            
+            tekenTom();
+            tekenSpeler();
+        
+            level3Part2GamePlay();
+        break;
+
         case GAMEOVER:
             tekenVeldST();
             textSize (50);
@@ -865,8 +877,86 @@ function level2Part4GamePlay(){
 }
 
 function level3Part1GamePlay(){
-    if (spelerX <= 20 && spelerX >= 120 ){
+    if (spelerX >= 20 && spelerX <= 120 ){
         boyTxt();
-         
+        text(dialogScene3Part1[0], col1, row2, 500,500);
+        choiceNumber = 0;
     }
+    if(spelerX > 120 && spelerX <= 220){
+        youTxt();
+        text(dialogScene3Part1[1], col1, row2, 500, 500)
+        text(dialogScene3Part1[3], col1, row4, 500, 500)
+        getChoice();
+    }
+    
+    if(spelerX >= 360 && spelerX <= 460 && choiceNumber == 1){
+        boyTxt();
+        text(dialogScene3Part1[2], col1, row2, 500, 500)
+    }
+    if(spelerX >= 360 && spelerX <= 460 && choiceNumber == 2){
+        boyTxt();
+        text(dialogScene3Part1[4], col1, row2, 500, 500)
+    }
+    if(spelerX >460 && spelerX <= 560){
+        tomTxt();
+        text(dialogScene3Part1[5], col1, row2, 500, 500)
+        text(dialogScene3Part1[6], col1, row3, 500, 500)
+        text(dialogScene3Part1[7], col1, row4, 500, 500)
+        choiceNumber = 0
+    }
+    if (spelerX > 560 && spelerX <= 660){
+        youTxt();
+        text(dialogScene3Part1[8], col1, row2, 500, 500)
+        text(dialogScene3Part1[10], col1, row3, 500, 500)
+        if (keyIsDown (49)){ //"1" ingedrukt
+            spelerX = 700;
+            choiceNumber = 1;
+        }
+        if (keyIsDown (50)){ //"2" ingedrukt
+            spelerX = 700;
+            choiceNumber = 2;
+        }
+    }
+    if(spelerX >= 700 && spelerX <= 800 && choiceNumber == 1){
+        tomTxt();
+        text(dialogScene3Part1[9], col1, row2, 500, 500)
+    }
+    if(spelerX >= 700 && spelerX <= 800 && choiceNumber == 2){
+        tomTxt();
+        text(dialogScene3Part1[11], col1, row2, 500, 500)
+    }
+    if (spelerX > 800 && spelerX <= 900){
+        tomTxt();
+        text(dialogScene3Part1[12], col1, row2, 500, 500)
+        text(dialogScene3Part1[13], col1, row3, 500, 500)
+    }
+    if(spelerX == 950){
+        //intialiseren variabelen lvl 3.2
+        spelerX = 20;
+        tomX = 600;
+        spelStatus = SPELEN_LVL3_2;
+    }
+}
+
+function level3Part2GamePlay (){
+    if(spelerX >= 20 && spelerX <= 120){
+        tomTxt();
+        text(dialogScene3Part2[0], col1, row2, 500, 500)
+        text(dialogScene3Part2[1], col1, row3, 500, 500)
+        choiceNumber = 0;
+    }
+    if(spelerX > 120 && spelerX <= 220){
+        tomTxt();
+        text(dialogScene3Part2[2], col1, row2, 500, 500)
+        text(dialogScene3Part2[3], col1, row3, 500, 500)
+        text(dialogScene3Part2[4], col1, row4, 500, 500)
+        getChoice;
+    }
+    if(spelerX > 220 && spelerX <= 320){
+        youTxt();
+        text(dialogScene3Part2[5], col1, row2, 500, 500)
+        text(dialogScene3Part2[6], col1, row3, 500, 500)
+        
+    }
+    getChoice();
 }
