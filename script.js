@@ -67,8 +67,6 @@ var col2 = 450;
 /*            variabelen voor gameplay           */
 /* ********************************************* */
 
-var playerName = ("INSERT NAME HERE")
-
 var compTxt = function(){ //dialoog van de computer
     textSize (30);
     fill("white");
@@ -117,11 +115,12 @@ var tomTxt = function(){ //dialoog van Tommy
 }
 
 //dialoog arrays
-var genericTxt = [
+var genericTxt = [ //Dit is de text voor alle tussenschermen
     'Hit enter to start',
     'Press "c" for credits',
     'Hit escape to restart',
-    'Thanks for playing',
+    'Thanks for playing, thats all i have time for',
+    'Under the SMP'
 ];
 
 var dialogScene1Part1 = [
@@ -200,7 +199,7 @@ var dialogScene2Part5 = [
 
 var dialogScene3Part1 = [
     //vraag 1
-    "Hello! Why are you? What are you doing here?",
+    "Hello! Who are you? What are you doing here?",
     //antwoord 1 + reactie
     "1. Wow, you are talkative and energetic",
     "Thanks! I guess it’s in my nature",
@@ -226,10 +225,10 @@ var dialogScene3Part2 = [
     //intro
     "Here we are! The entrance to the great Pogtopia!",
     "Oh, but before we go in, I need to tell you something",
-    "You see, Wilbur usually doesn’t do well with outsiders",
-    "And lately he’s been a bit, irritable",
+    "Wilbur doesn’t do well with outsiders",
+    "And he’s been a bit, irritable",
     //vraag 3
-    "Please, just try to stay on his good side",
+    "Just try to stay on his good side",
     //antwoord 1 + reactie
     "1. I'll try my best!",
     "Thank you so much, he’s not that bad, i promise",
@@ -251,10 +250,14 @@ function draw() {
 
         case INTRO:
             tekenVeldST();
-            textSize(50);
             fill('#1f4217')
+            textSize(60);
+            text(genericTxt[4], 200, 200, 500, 500)
+
+            textSize(50);
             text(genericTxt[0], col1, row1, 500, 500)
             text(genericTxt[1], col1, row3, 500, 500)
+
             if (keyIsDown(13)) {
                 //intitialiseren variabelen
                 spelerX = 20
@@ -281,8 +284,10 @@ function draw() {
             tekenVeldST();
             textSize(50);
             fill('#1f4217')
+
             text('Level 1: The beginning', col1, row1, 500, 500)
             text(genericTxt[0], col1, row4, 500, 500)
+
             if (keyIsDown(13)) {
                 //intitialiseren variabelen
                 spelerX = 20
@@ -333,8 +338,10 @@ function draw() {
             tekenVeldST();
             textSize(50);
             fill('#1f4217')
+
             text('Level 2: Kinoko Kingdom', col1, row1, 500, 500)
             text(genericTxt[0], col1, row4, 500, 500)
+
             if (keyIsDown(13)) {
                 //intitialiseren variabelen
                 spelerX = 1200
@@ -370,8 +377,10 @@ function draw() {
             tekenVeldST();
             textSize(50);
             fill('#1f4217')
+
             text('Level ?: The Library', col1, row1, 500, 500)
             text(genericTxt[0], col1, row3, 500, 500)
+
             if (keyIsDown(13)) {
                 //intitialiseren variabelen
                 spelerX = 20
@@ -394,8 +403,10 @@ function draw() {
             tekenVeldST();
             textSize(50);
             fill('#1f4217')
+
             text('Level 3: Journey with a child', col1, row1, 500, 500)
             text(genericTxt[0], col1, row4, 500, 500)
+
             if (keyIsDown(13)) {
                 //intitialiseren variabelen
                 spelerX = 20
@@ -415,7 +426,7 @@ function draw() {
             level3Part1GamePlay();
         break;
 
-        case SPELEN_LVL3_1:
+        case SPELEN_LVL3_2:
             tekenVeld6();
             checkGameOver();
 
@@ -431,9 +442,11 @@ function draw() {
             tekenVeldST();
             textSize (50);
             fill('#1f4217')
-            text(genericTxt[3], 200, 200, 200, 200);
-            text(genericTxt[2], 500, 200, 200, 200);
-            text(genericTxt[1],600,200,200,200 )
+
+            text(genericTxt[3], 200, 200, 500, 500);
+            text(genericTxt[2], 200, 400, 500, 500);
+            text(genericTxt[1], 200, 600, 500, 500);
+            
             if (keyIsDown(67)) {
                 spelStatus = CREDITS
             }
@@ -443,7 +456,7 @@ function draw() {
             tekenVeldST();
             textSize(40);
             teller = teller - 1;
-            if (teller == -1340){
+            if (teller == -1440){
                 teller = 0;
             }
             fill('#1f4217')
@@ -478,7 +491,12 @@ function draw() {
             text('  from the game terraria.org', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
             volgendeRegel = volgendeRegel + 40;
             text('- Base of all the characters: frisk from undertale.com', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)   
-            volgendeRegel = 0;       
+            volgendeRegel = volgendeRegel + 40;  
+            text('- Kinoko Kingdom background: u/TexMexxx, reddit.com', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = volgendeRegel + 40;
+            text('- Pogtopia entrance background: RodrixAP, flickr.com', 200, startRegel1 + volgendeRegel + teller, 1000, 1000)
+            volgendeRegel = 0;
+
   }
 }
 
@@ -930,7 +948,7 @@ function level3Part1GamePlay(){
         text(dialogScene3Part1[12], col1, row2, 500, 500)
         text(dialogScene3Part1[13], col1, row3, 500, 500)
     }
-    if(spelerX == 950){
+    if(spelerX >= 1000){
         //intialiseren variabelen lvl 3.2
         spelerX = 20;
         tomX = 600;
@@ -942,7 +960,7 @@ function level3Part2GamePlay (){
     if(spelerX >= 20 && spelerX <= 120){
         tomTxt();
         text(dialogScene3Part2[0], col1, row2, 500, 500)
-        text(dialogScene3Part2[1], col1, row3, 500, 500)
+        text(dialogScene3Part2[1], col1, row4, 500, 500)
         choiceNumber = 0;
     }
     if(spelerX > 120 && spelerX <= 220){
@@ -955,8 +973,19 @@ function level3Part2GamePlay (){
     if(spelerX > 220 && spelerX <= 320){
         youTxt();
         text(dialogScene3Part2[5], col1, row2, 500, 500)
-        text(dialogScene3Part2[6], col1, row3, 500, 500)
+        text(dialogScene3Part2[7], col1, row3, 500, 500)
         
     }
     getChoice();
+    if(spelerX >= 360 && spelerX <= 460 && choiceNumber == 1){
+        tomTxt();
+        text(dialogScene3Part2[6], col1, row2, 500, 500)
+    }
+    if(spelerX >= 360 && spelerX <= 460 && choiceNumber == 2){
+        tomTxt();
+        text(dialogScene3Part2[8], col1, row2, 500, 500)
+    }
+    if(spelerX == 600){
+        spelStatus = GAMEOVER
+    }
 }
