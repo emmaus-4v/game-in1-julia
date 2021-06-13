@@ -12,18 +12,18 @@ Basis: uitleg, spelen, afgaan en punten
 - [X] teken speler
 - [X] beweeg speler
 - [X] teken andere karakters
-- [-] Verschillende levels
-- [-] uitlegscherm
+- [X] Verschillende levels
+- [X] uitlegscherm
 
 Uitbreiding:
 - [X] Dialoog, en opties voor dialoog
-- [ ] name insert
+- [X] Voor alles een passend uiterlijk hebben
 - [X] Rollende credits
 
 Uitbreiding:
 - [ ] Elk individuele karakter uitwerken (alle 9)
 - [X] Verschillende achtergronden voor elke locatie
-- [ ] Relationship stats
+- [X] Geheim level
 
 ## Credits
 - Concept by : Julia Suijker
@@ -47,17 +47,17 @@ Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5z
 ## Requirements
 - [X] Het start op
 - [X] Het werkt
-- [ ] Behaalde punten zijn zichtbaar bij game over
-- [ ] Het doel en de bediening van het spel zijn duidelijk
+- [N.V.T] Behaalde punten zijn zichtbaar bij game over
+- [X] Het doel en de bediening van het spel zijn duidelijk
 
-- [ ] Aantrekelijk uiterlijk
-- [ ] Prettige bediening
+- [X] Aantrekelijk uiterlijk
+- [X] Prettige bediening
 - [ ] Eenvoudig om me te beginnen, moeilijker als je verder komt
 - [ ] Afwisseling
 
 - [X] Code volgt de lijn van de template
 - [ ] Code is netjes en duidelijk leesbaar
-- [ ] Code bevat geen dubbele stukjes code
+- [X] Code bevat geen dubbele stukjes code
 - [X] Je hebt technieken gebruikt die zijn aangeboden
 - [X] Je hebt dingen toegevoegd waarven je zelf hebt onderzocht hoe ze werken
 
@@ -80,11 +80,11 @@ vrijdag
 - [X] find character picture
 zaterdag
 - [X] intro level
-- [-] make at least 2nd level
+- [X] make at least 2nd level
 - [X] endscreen & credits
 zondag
 - [X] intro screen
-- [ ] relationship stats
+- [X] level opening screens
 - [ ] any other levels you can manage
 
 

@@ -9,28 +9,32 @@
 
 //Het level bijhouden
 const INTRO = 0;                // Openingsscherm
-const INTROLVL = 1;             // Hrt eerste level, laat zien hoe je moet bewegen, exitten en hoe je keuzes moet maken
-const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in README
-const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in README
-const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in README
-const SPELEN_LVL2_1 = 21;       // Zie level 2 beschrijving in README
-const SPELEN_LVL2_2 = 22;       // Zie level 2 beschrijving in README
-const SPELEN_LVL2_5 = 25;       // Zie level 2 beschrijving in README
-const SPELEN_LVL3 = 30;         // Zie level 3 beschrijving in README
+const INTROLVL = 1;             // Het eerste level, laat zien hoe je moet bewegen, exitten en hoe je keuzes moet maken
+const SPELEN_LVL1_0 = 10;       // Openingsscherm voor level 1
+const SPELEN_LVL1_1 = 11;       // Zie level 1 beschrijving in het document
+const SPELEN_LVL1_2 = 12;       // Zie level 1 beschrijving in het document
+const SPELEN_LVL1_3 = 13;       // Zie level 1 beschrijving in het document
+const SPELEN_LVL2_0 = 20;       // Openingsscherm voor level 2
+const SPELEN_LVL2_1 = 21;       // Zie level 2 beschrijving in het document
+const SPELEN_LVL2_2 = 22;       // Zie level 2 beschrijving in het document
+const SPELEN_LVL2_3 = 23        // Openingsscherm geheim level
+const SPELEN_LVL2_4 = 24;       // Zie level 2.5 beschrijving in het document
+const SPELEN_LVL3_0 = 30;       // Openingsscherm level 3
+const SPELEN_LVL3_1 = 31;       // Zie level 3 beschrijving in het document
+const SPELEN_LVL3_2 = 32;       // Zie level 3 beschrijving in het document
 const GAMEOVER = 100;           // Gameover scherm
 const CREDITS = 200;            // Laat alle credits zien
-var spelStatus = INTRO; 
+var spelStatus = INTRO;         // Laat het spel beginnen op het openingsscherm
 
 var spelerX = 0;                // x-positie van speler
 var spelerY = 150;              // y-positie van speler
-
 var nikiX = 1050;               // x-positie van Niki Nihachu
 var nikiY = 150;                // y-positie van Niki Nihachu
+var karlX = 1000;               // x-positie van Karl Jacobs
+var karlY = 150;                // y-positie van Karl Jacobs
+var tomX = 1000;                // x-positie van Tommy Innit
+var tomY = 150;                 // y-positie van Tommy Innit
 
-var karlX = 1000;                  // x-positie van Karl Jacobs
-var karlY = 150;                  // y-positie van Karl Jacobs
-
-var score = 0;                  // aantal behaalde punten
 var teller = 0;
 
 var choiceNumber = 0;           // houdt de keuze bij die gemaakt is
@@ -44,10 +48,12 @@ var bg1;
 var bg2;
 var bg3;
 var bg4;
-var bg45;
+var bg5;
+var bg6;
 var playerimg;
 var nikiImg;
 var karlImg;
+var tomImg;
 
 // de X & Y coordinaten van alle text
 var row1 = 475;
@@ -62,8 +68,6 @@ var col2 = 450;
 /* ********************************************* */
 
 var playerName = ("INSERT NAME HERE")
-
-var characterNames = ["Niki Nihachu”,“Karl Jacobs”, “Tommy Innit”, “Wilbur Soot”, “Quackity”, “Tubbo”, “Technoblade”, “J. Schlatt",]
 
 var compTxt = function(){ // als de computer praat in het intro level
     textSize (30);
@@ -85,22 +89,39 @@ var ladyTxt = function(){ // als Niki (nu nog onbekend) praat
 var mushTxt = function(){ //mushroom boy dialogue
     textSize (30);
     fill('#ab1a00');
-    text("Mushroom man", col1, row1, 500, 500)
+    text("Mushroom man: ", col1, row1, 500, 500)
 }
 
 var karlTxt = function(){ //Karl dialogue
     textSize (30);
     fill('#ab1a00');
-    text("King Karl Jacobs", col1, row1, 500, 500)
+    text("King Karl Jacobs: ", col1, row1, 500, 500)
 }
 
-var bookTxt = function(){
+var bookTxt = function(){ //Book dialogue
     textSize (30);
     fill('#d6c483');
-    text("Books", col1, row1, 500, 500)
+    text("Old books:", col1, row1, 500, 500)
+}
+
+var boyTxt = function(){ //boy dialogue
+    textSize (30);
+    fill('#d61111');
+    text("Loud Boy: ", col1, row1, 500, 500)
 }
 
 //dialoog arrays
+var genericTxt = [
+    'Hit enter to start',
+    'Press "c" for credits',
+    'Hit escape to restart',
+    'Thanks for playing',
+    'Quackity',
+    'Tubbo',
+    'Technoblade',
+    'J. Schlatt'
+];
+
 var dialogScene1Part1 = [
     "Ah, I see you've finally awoken.", 
     "Who the hell are you!", 
@@ -149,7 +170,7 @@ var dialogScene2Part2 = [
     "1. Here? Dude I don't even know where I am!",
     "You’re in Kinoko Kingdom, and I am the king",
     //answer 2 + response
-    "I have business with your mom",
+    "2. I have business with your mom",
     "Okay, that was kind of funny, I’ll give you that",
     //The rest of Karl's monologue
     "You’re really not from around here, are you?",
@@ -165,14 +186,42 @@ var dialogScene2Part5 = [
     "The first of the kingdoms was started by a group of friends",
     "Others flocked to the kingdom, but soon were upset with the rules",
     "They moved away, starting a new nation",
-    "High wall protected all the seperatists and the other citizens",
-    "After some time, both of the kingdoms were living in peace",
+    "High walls protected the seperatists and the other citizens",
+    "For some time the nations lived in peace",
     "Until the original kingdom attacked the seperatists",
     "The war went on a long time, both sides made sacrifices",
-    "After the war, the seperatists had an election",
-    "A newcomer, an outsider won, and kicked out the old leaders",
+    "Now, the seperatists are having an election",
+    "A newcomer, an outsider has won,he kicked out the old leaders",
     "Things are going wrong",
-    "Must leave to keep the library safe"
+    "I must leave to keep the library safe"
+]
+
+var dialogScene3Part1 = [
+    "Hello! Why are you? What are you doing here?",
+    "1. Wow, you are talkative and energetic",
+    "Thanks! I guess it’s in my nature",
+    "2. That is none of your business",
+    "Oh damm, rude much, i understand though",
+    "Do you want to walk with me?",
+    "Please, Wilbur doesn’t go on walks with me anymore",
+    "1. I am, not surprised",
+    "Excuse you? I am great company i'll have you know",
+    "2. Who is Wilbur?",
+    "Wilbur is my amazing older brother, don't tell him i said that",
+    "Would you like to visit our place?",
+    "Too late, I’m dragging you along!"
+]
+
+var dialogScene3Part2 = [
+    "Here we are! The entrance to the great Pogtopia!",
+    "Oh, but before we go in, I need to tell you something",
+    "You see, Wilbur usually doesn’t do well with outsiders",
+    "And lately he’s been a bit, irritable",
+    "Please, just try to stay on his good side",
+    "1. I'll try my best!",
+    "Thank you so much, he’s not that bad, i promise",
+    "2. I make no promises",
+    "I didn’t expect anything less"
 ]
 
 /* ********************************************* */
@@ -190,9 +239,8 @@ function draw() {
             tekenVeldST();
             textSize(50);
             fill('#1f4217')
-            text('Hit enter to start', col1, row1, 500, 500)
-            text('Hit "c" for the credits', col1, row3, 500, 500)
-            //ADD ANY TYPE OF BACKGROUND PICTURE
+            text(genericTxt[0], col1, row1, 500, 500)
+            text(genericTxt[1], col1, row3, 500, 500)
             if (keyIsDown(13)) {
                 //intitialiseren variabelen
                 spelerX = 20
@@ -211,8 +259,21 @@ function draw() {
 
             tekenSpeler();
             
-            levelZeroGamePlay();
+            level0GamePlay();
         
+        break;
+
+        case SPELEN_LVL1_0:
+            tekenVeldST();
+            textSize(50);
+            fill('#1f4217')
+            text('Level 1: The beginning', col1, row1, 500, 500)
+            text(genericTxt[0], col1, row4, 500, 500)
+            if (keyIsDown(13)) {
+                //intitialiseren variabelen
+                spelerX = 20
+                spelStatus = SPELEN_LVL1_1
+            }
         break;
 
         case SPELEN_LVL1_1:
@@ -225,7 +286,7 @@ function draw() {
             tekenNiki();
             tekenSpeler();
             
-            levelOnePartOneGamePlay();
+            lvl1part1GamePlay();
         break;
 
         case SPELEN_LVL1_2:
@@ -238,7 +299,7 @@ function draw() {
             tekenNiki();
             tekenSpeler();
             
-            levelOnePartTwoGamePlay();
+            lvl1part2GamePlay();
         break;
 
         case SPELEN_LVL1_3:
@@ -251,7 +312,20 @@ function draw() {
             tekenNiki();
             tekenSpeler();
         
-            levelOnePartThreeGamePlay();
+            lvl1part3GamePlay();
+        break;
+
+        case SPELEN_LVL2_0:
+            tekenVeldST();
+            textSize(50);
+            fill('#1f4217')
+            text('Level 2: Kinoko Kingdom', col1, row1, 500, 500)
+            text(genericTxt[0], col1, row4, 500, 500)
+            if (keyIsDown(13)) {
+                //intitialiseren variabelen
+                spelerX = 1200
+                spelStatus = SPELEN_LVL2_1
+            }
         break;
 
         case SPELEN_LVL2_1:
@@ -263,7 +337,7 @@ function draw() {
 
             tekenSpeler();
         
-            levelTwoPartOneGamePlay();
+            lvl2part1GamePlay();
         break;
 
         case SPELEN_LVL2_2:
@@ -275,27 +349,68 @@ function draw() {
             tekenKarl();
             tekenSpeler();
         
-            levelTwoPartTwoGamePlay();
+            level2Part2GamePlay();
         break;
 
-        case SPELEN_LVL2_5:
-            tekenVeld45();
+        case SPELEN_LVL2_3:
+            tekenVeldST();
+            textSize(50);
+            fill('#1f4217')
+            text('Level ?: The Library', col1, row1, 500, 500)
+            text(genericTxt[0], col1, row3, 500, 500)
+            if (keyIsDown(13)) {
+                //intitialiseren variabelen
+                spelerX = 20
+                spelStatus = SPELEN_LVL2_4
+            }
+        break;
+
+        case SPELEN_LVL2_4:
+            tekenVeld5();
             checkGameOver();
 
             beweegSpeler();
             
             tekenSpeler();
         
-            levelTwoPartFiveGamePlay();
+            level2Part4GamePlay();
+        break;
+
+        case SPELEN_LVL3_0:
+            tekenVeldST();
+            textSize(50);
+            fill('#1f4217')
+            text('Level 3: Journey with a child', col1, row1, 500, 500)
+            text(genericTxt[0], col1, row4, 500, 500)
+            if (keyIsDown(13)) {
+                //intitialiseren variabelen
+                spelerX = 20
+                spelStatus = SPELEN_LVL3_1
+            }
+        break;
+
+        case SPELEN_LVL3_1:
+            tekenVeld1();
+            checkGameOver();
+
+            beweegSpeler();
+            
+            tekenTom();
+            tekenSpeler();
+        
+            level3Part1GamePlay();
         break;
 
         case GAMEOVER:
             tekenVeldST();
             textSize (50);
             fill('#1f4217')
-            text('Thanks for playing', 200, 200, 200, 200);
-            text('Hit escape to restart', 500, 200, 200, 200);
-            text('Press alt for the credits',600,200,200,200 )
+            text(genericTxt[3], 200, 200, 200, 200);
+            text(genericTxt[2], 500, 200, 200, 200);
+            text(genericTxt[1],600,200,200,200 )
+            if (keyIsDown(67)) {
+                spelStatus = CREDITS
+            }
         break;
 
         case CREDITS:
@@ -355,13 +470,17 @@ function preload(){
     // @ts-ignore
     bg4 = loadImage('Pictures/bg4.png')
     // @ts-ignore
-    bg45 = loadImage('Pictures/bg4.5.png')
+    bg5 = loadImage('Pictures/bg5.png')
+    // @ts-ignore
+    bg6 = loadImage('Pictures/bg6.png')
     // @ts-ignore
     playerimg = loadImage('Pictures/mc.png')
     // @ts-ignore
     nikiImg = loadImage('Pictures/niki.png')
     // @ts-ignore
     karlImg = loadImage('Pictures/karl.png')
+    // @ts-ignore
+    tomImg = loadImage('Pictures/tommy.png')
 }
 
 var tekenVeldST = function () {
@@ -394,9 +513,14 @@ var tekenVeld4 = function () {
     image(bg4, 0, 0, width, height);
 };
 
-var tekenVeld45 = function () {
+var tekenVeld5 = function () {
     //laad het achtegrond plaatje
-    image(bg45, 0, 0, width, height);
+    image(bg5, 0, 0, width, height);
+};
+
+var tekenVeld6 = function () {
+    //laad het achtegrond plaatje
+    image(bg6, 0, 0, width, height);
 };
 
 /**
@@ -411,6 +535,13 @@ var tekenNiki = function() {
  */
 var tekenKarl = function() {
     image(karlImg, karlX, karlY, 250, 207);
+}
+
+/**
+ * Tekent Tommy Innit
+ */
+var tekenTom = function() {
+    image(tomImg, tomX, tomY, 250, 207);
 }
 
 /**
@@ -472,10 +603,10 @@ function setup() {
 /*               gameplay functies               */
 /* ********************************************* */
 
-function levelZeroGamePlay(){
+function level0GamePlay(){
     if (spelerX >= 20 && spelerX <= 100 ){
         compTxt();
-        text("Hello, welcome to 'Under the Smp'", col1, row1, 500, 500)
+        text("Hello, welcome to 'Under the Smp", col1, row1, 500, 500)
         text("Use the 'a' and 'd' keys to move", col1, row2, 500, 500)
         text("Use the escape key to return to the home screen at any time", col1, row3, 500, 500)
     }
@@ -506,11 +637,11 @@ function levelZeroGamePlay(){
     if (keyIsDown(71)) {
         //intitialiseren variabelen lvl1.1
         spelerX = 20
-        spelStatus = SPELEN_LVL1_1
+        spelStatus = SPELEN_LVL1_0
     }
 }
 
-function levelOnePartOneGamePlay(){
+function lvl1part1GamePlay(){
     if (spelerX >= 50 && spelerX <= 300) {
         ladyTxt()
         text (dialogScene1Part1[0],col1, row2,500,500);
@@ -538,7 +669,7 @@ function levelOnePartOneGamePlay(){
     }
 }
 
-function levelOnePartTwoGamePlay(){
+function lvl1part2GamePlay(){
     if (spelerX >= 50 && spelerX <= 250){
         ladyTxt();
         text(dialogScene1Part2[0],col1, row2, 500, 500)
@@ -568,7 +699,7 @@ function levelOnePartTwoGamePlay(){
     }
 }
 
-function levelOnePartThreeGamePlay(){
+function lvl1part3GamePlay(){
     if (spelerX <= 275){
         ladyTxt();
         text(dialogScene1Part3[0],col1,row2,500,500)
@@ -592,11 +723,11 @@ function levelOnePartThreeGamePlay(){
         //initialiseren variabelen lvl2.1
         spelerX = 1200;
         spelerY = 150;
-        spelStatus = SPELEN_LVL2_1
+        spelStatus = SPELEN_LVL2_0
     }
 }
 
-function levelTwoPartOneGamePlay(){
+function lvl2part1GamePlay(){
     if (spelerX <= 1200 && spelerX >= 1050){
         youTxt();
         text(dialogScene2Part1[0], col1, row2, 500, 500);
@@ -625,18 +756,18 @@ function levelTwoPartOneGamePlay(){
     }
     if (spelerX == 100){
         //initialiseren variabelen lvl2.2
-        spelerX = 50
+        spelerX = 150
         spelStatus = SPELEN_LVL2_2
     }
 }
 
-function levelTwoPartTwoGamePlay() {
-    if (spelerX >= 50 && spelerX <= 150){
+function level2Part2GamePlay() {
+    if (spelerX >= 150 && spelerX <= 250){
         mushTxt();
         text(dialogScene2Part2[0], col1, row2, 500, 500);
         choiceNumber = 0;
     }
-    if (spelerX > 150 && spelerX<= 300){
+    if (spelerX > 250 && spelerX<= 350){
         youTxt();
         text(dialogScene2Part2[1], col1, row2, 500, 500)
         text(dialogScene2Part2[3], col1, row4, 500, 500)
@@ -671,18 +802,58 @@ function levelTwoPartTwoGamePlay() {
     if (spelerX == 1200 ){
         // Initialiseren variabelen lvl2.5
         spelerX = 1200;
-        spelStatus = SPELEN_LVL2_5;
+        spelStatus = SPELEN_LVL2_3;
+    }
+    if (spelerX == 20 ){
+        // Initialiseren variabelen lvl2.5
+        spelerX = 20;
+        spelStatus = SPELEN_LVL3_0;
     }
 }
 //fix het begin van het nieuwe lvl
-function levelTwoPartFiveGamePlay(){
-    if (spelerX = 20){
-        //initaliseren variabelen lvl2.2
-        spelerX = 1150;
-        spelStatus = SPELEN_LVL2_2;
-    }
+function level2Part4GamePlay(){
     if (spelerX >= 50 && spelerX <= 100 ){
         bookTxt();
-        //enter all the new text from scene2.5
+        text(dialogScene2Part5[0], col1, row2, 500, 500)
+    }
+    if (spelerX > 100 && spelerX <= 200 ){
+        bookTxt();
+        text(dialogScene2Part5[1], col1, row2, 500, 500)
+        text(dialogScene2Part5[2], col1, row4, 500, 500)
+    }
+    if (spelerX > 200 && spelerX <= 300 ){
+        bookTxt();
+        text(dialogScene2Part5[3], col1, row2, 500, 500)
+        text(dialogScene2Part5[4], col1, row4, 500, 500)
+    }
+    if (spelerX > 300 && spelerX <= 400 ){
+        bookTxt();
+        text(dialogScene2Part5[5], col1, row2, 500, 500)
+        text(dialogScene2Part5[6], col1, row4, 500, 500)
+    }
+    if (spelerX > 400 && spelerX <= 500 ){
+        bookTxt();
+        text(dialogScene2Part5[7], col1, row2, 500, 500)
+    }
+    if (spelerX > 500 && spelerX <= 600 ){
+        bookTxt();
+        text(dialogScene2Part5[8], col1, row2, 500, 500)
+        text(dialogScene2Part5[9], col1, row4, 500, 500)
+    }
+    if (spelerX > 600 && spelerX <= 700 ){
+        bookTxt();
+        text(dialogScene2Part5[10], col1, row2, 500, 500)
+    }
+    if (spelerX == 1000){
+        //initaliseren variabelen lvl2.2
+        spelerX = 20;
+        spelStatus = SPELEN_LVL2_2;
+    }
+}
+
+function level3Part1GamePlay(){
+    if (spelerX <= 20 && spelerX >= 120 ){
+        boyTxt();
+         
     }
 }
