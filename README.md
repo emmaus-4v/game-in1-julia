@@ -21,7 +21,7 @@ Uitbreiding:
 - [X] Rollende credits
 
 Uitbreiding:
-- [ ] Elk individuele karakter uitwerken (alle 9)
+- [-] Elk individuele karakter uitwerken (alle 9)
 - [X] Verschillende achtergronden voor elke locatie
 - [X] Geheim level
 
@@ -42,7 +42,10 @@ Uitbreiding:
 - Pogtopia entrance background: RodrixAP, flickr.com
 - Manberg background: Blackspire, assetstore.unity.com/
 
-Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
+- Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5zUbgwgYLe7qSW4e4QQGyhZTOQ/edit?usp=sharing
+Hierin staat alle text en dialoog die uiteindelijk niet in de game zijn gekomen. Ook staan hier alle karakters uitgewerkt, 
+ook degene die niet in de game verschenen vanwege tijdsnood. In dit document staat ook een lijst van alle locaties waar het verhaal zich afspeelt
+Als laatste staat er een samenvatting van de volledige verhaallijn van begin tot einde.
 
 ## Requirements
 - [X] Het start op
@@ -65,29 +68,3 @@ Het hele lange document: https://docs.google.com/document/d/1UPTs0JbPyppNb47jc5z
 - [X] De planning is vooraf gemaakt, gevolgd en aangepast
 - [X] Werk is verdeeld over de weken waarin het project gewerkt
 
-## To do
-donderdag
-- [X] make shit work
-- [X] add background
-- [X] find bg picture
-- [X] add player
-- [X] find player picture
-- [X] move player
-vrijdag
-- [X] dialog text
-- [X] dialog options
-- [X] add other character
-- [X] find character picture
-zaterdag
-- [X] intro level
-- [X] make at least 2nd level
-- [X] endscreen & credits
-zondag
-- [X] intro screen
-- [X] level opening screens
-- [ ] any other levels you can manage
-
-
-## Extra's
-- to do lvls : relationship stats?
-- to do art: logo, backgrounds, character art

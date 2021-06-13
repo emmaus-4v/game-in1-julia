@@ -38,8 +38,8 @@ var tomY = 150;                 // y-positie van Tommy Innit
 var teller = 0;
 
 var choiceNumber = 0;           // houdt de keuze bij die gemaakt is
-var startRegel1 = 720;
-var volgendeRegel = 0;
+var startRegel1 = 720;          // variabelen voor de credits
+var volgendeRegel = 0;          // variabelen voor de credits
 
 // plaatjes
 var startbg;
@@ -69,45 +69,51 @@ var col2 = 450;
 
 var playerName = ("INSERT NAME HERE")
 
-var compTxt = function(){ // als de computer praat in het intro level
+var compTxt = function(){ //dialoog van de computer
     textSize (30);
     fill("white");
 }
 
-var youTxt = function(){ // als de speler praat
+var youTxt = function(){ //dialoog van de speler
     textSize (30);
     fill('#ede6ea');
     text ("You:",col1 ,row1 ,500,500);
 }
 
-var ladyTxt = function(){ // als Niki (nu nog onbekend) praat
+var ladyTxt = function(){ //dialoog van de vreemde vrouw (Niki)
     textSize (30);
     fill('#f7add7');
     text ("Strange Lady:",col1,row1,500,500);
 }
 
-var mushTxt = function(){ //mushroom boy dialogue
+var mushTxt = function(){ //dialoog van de jongen die gekleed is als een paddestoel
     textSize (30);
     fill('#ab1a00');
     text("Mushroom man: ", col1, row1, 500, 500)
 }
 
-var karlTxt = function(){ //Karl dialogue
+var karlTxt = function(){ //dialoog van Karl
     textSize (30);
     fill('#ab1a00');
     text("King Karl Jacobs: ", col1, row1, 500, 500)
 }
 
-var bookTxt = function(){ //Book dialogue
+var bookTxt = function(){ //dialoog van de boeken
     textSize (30);
     fill('#d6c483');
     text("Old books:", col1, row1, 500, 500)
 }
 
-var boyTxt = function(){ //boy dialogue
+var boyTxt = function(){ //dialoog van de jongen
     textSize (30);
     fill('#d61111');
     text("Loud Boy: ", col1, row1, 500, 500)
+}
+
+var tomTxt = function(){ //dialoog van Tommy
+    textSize (30);
+    fill('#d61111');
+    text("Tommy: ", col1, row1, 500, 500)
 }
 
 //dialoog arrays
@@ -116,10 +122,6 @@ var genericTxt = [
     'Press "c" for credits',
     'Hit escape to restart',
     'Thanks for playing',
-    'Quackity',
-    'Tubbo',
-    'Technoblade',
-    'J. Schlatt'
 ];
 
 var dialogScene1Part1 = [
@@ -130,49 +132,49 @@ var dialogScene1Part1 = [
 ];
 
 var dialogScene1Part2 = [
-    //question 1
+    //vraag 1
     "Here we are the beautiful entrance to my city!",
-    //answer 1 + response
+    //antwoord 1 + reactie
     "1. But cities cant be underground?",
     "Of course they can silly! I built this city all by myself! I spent a lot of time excavating all that stone." ,
-    //answer 2 + response
+    //antwoord 3 + reactie
     "2. Why is it so hidden? Are you hiding from someone?" ,
     "My city is a haven for those who are lost, scared or still searching."
 ];
 
 var dialogScene1Part3 = [
-    //question 2
+    //vraag 2
     "Isn't it beautiful? Wouldn't you want to stay here forever?", 
-    //answer 1 + response
+    //antwoord 1 + reactie
     "1. No! Are you insane lady?", 
     "Oh, I just thought it would have been nice for you to stay a while...", 
-    //answer 2 + response
+    //antwoord 2 + reactie
     "2. Oh, no thank you ma'am, I still have so much of the world left to explore!", 
     "That's alright, just know the city will always be available in case you need a place to stay!"
 ];
 
 var dialogScene2Part1 = [
-    //answer 1 + response
+    //antwoord 1 + reactie
     "1. That woman was really weird",
     "I'm really glad I got out of there",
-    //answer 2 + response
+    //antwoord 2 + reactie
     "2. She never even told me her name",
     "Oh well, I'm sure we'll meet again",
-    //More monologueing
+    //verder met de monoloog
     "I'll just go into another direction",
     "I'll just see where I end up",
 ]
 
 var dialogScene2Part2 = [
-    //question 3
+    //vraag 3
     "Who are you? What business do you have here?",
-    //answer 1 + response
+    //antwoord 1 + reactie
     "1. Here? Dude I don't even know where I am!",
     "You’re in Kinoko Kingdom, and I am the king",
-    //answer 2 + response
+    //antwoord 2 + reactie
     "2. I have business with your mom",
     "Okay, that was kind of funny, I’ll give you that",
-    //The rest of Karl's monologue
+    //de rest van Karl zijn monoloog
     "You’re really not from around here, are you?",
     "Stranger, turn around and leave Kinoko Kingdom at once",
     "As it is a matter of national security declared by king Karl",
@@ -182,7 +184,7 @@ var dialogScene2Part2 = [
 ]
 
 var dialogScene2Part5 = [
-    //the stories that the books tell
+    //De verhalen die vertelt worden door de boeken
     "The first of the kingdoms was started by a group of friends",
     "Others flocked to the kingdom, but soon were upset with the rules",
     "They moved away, starting a new nation",
@@ -197,29 +199,41 @@ var dialogScene2Part5 = [
 ]
 
 var dialogScene3Part1 = [
+    //vraag 1
     "Hello! Why are you? What are you doing here?",
+    //antwoord 1 + reactie
     "1. Wow, you are talkative and energetic",
     "Thanks! I guess it’s in my nature",
+    //antwoord 2 + reactie
     "2. That is none of your business",
     "Oh damm, rude much, i understand though",
+    //vraag 2
+    "Oh, I'm Tommy, by the way",
     "Do you want to walk with me?",
     "Please, Wilbur doesn’t go on walks with me anymore",
+    //antwoord 1 + reactie
     "1. I am, not surprised",
     "Excuse you? I am great company i'll have you know",
+    //antwoord 2 + reactie
     "2. Who is Wilbur?",
     "Wilbur is my amazing older brother, don't tell him i said that",
+    //einde van deel 1
     "Would you like to visit our place?",
     "Too late, I’m dragging you along!"
 ]
 
 var dialogScene3Part2 = [
+    //intro
     "Here we are! The entrance to the great Pogtopia!",
     "Oh, but before we go in, I need to tell you something",
     "You see, Wilbur usually doesn’t do well with outsiders",
     "And lately he’s been a bit, irritable",
+    //vraag 3
     "Please, just try to stay on his good side",
+    //antwoord 1 + reactie
     "1. I'll try my best!",
     "Thank you so much, he’s not that bad, i promise",
+    //antwoord 2 + reactie
     "2. I make no promises",
     "I didn’t expect anything less"
 ]
@@ -554,7 +568,7 @@ var tekenSpeler = function() {
 
 /**
  * Zorg ervoor dat A en D de beweegknoppen zijn
- * Updatet globale variabele spelerX en spelerY
+ * Update globale variabele spelerX en spelerY
  */
 var beweegSpeler = function() {
     if (keyIsDown(65) && spelerX > 20) {
@@ -596,7 +610,6 @@ function getChoice (){
 function setup() {
     createCanvas(1280, 720);  //Maakt het canvas
     background('blue');       // Maakt de achtergrond blauw
- //rect(30, 20, 55, 55);    //REMOVE THIS WHEN DONE
 }
 
 /* ********************************************* */
@@ -734,10 +747,10 @@ function lvl2part1GamePlay(){
         text(dialogScene2Part1[2], col1, row3, 500, 500)
         choiceNumber = 0;
     }
-    if (keyIsDown (49)){ //"1" ingedrukt
+    if (keyIsDown (49)){
         spelerX = 1000;
         choiceNumber = 1;}
-    if (keyIsDown (50)){ //"2" ingedrukt
+    if (keyIsDown (50)){
         spelerX = 1000;
         choiceNumber = 2;
     }
@@ -810,7 +823,7 @@ function level2Part2GamePlay() {
         spelStatus = SPELEN_LVL3_0;
     }
 }
-//fix het begin van het nieuwe lvl
+
 function level2Part4GamePlay(){
     if (spelerX >= 50 && spelerX <= 100 ){
         bookTxt();
